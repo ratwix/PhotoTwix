@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Photomaton</title>
+    <meta name="Photomaton" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+	<link href="./css/preview_style.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+	
+	
+  </head>
+
+  <body onkeypress="detectkey(event)">
+	<div id="photomaton">
+		<div id="camera" style="display:none">
+			<div id="camera_info" class="camera_info"> <!-- Contient les infos sur ce qui est actuellement affiché -->
+				<div id="camera_view"> <!-- Vision de la camera -->
+				  <video id="camera_direct" autoplay onclick="change_filter()" style="display:none; height: auto; width: auto"></video>
+				  
+				  <table id="camera_tab">
+					  <tr id="camera_tab_1">
+						<td id="camera_tab_1_1">
+							<div id="camera_1" class="camera_4">
+								<div id="camera_view_1" class="camera_container"></div>
+								<img id="camera_view_result_1" class="camera_container_result" style="display:none"></img>
+							</div>
+						</td>
+						<td id="camera_tab_1_2">
+							<div id="camera_2" class="camera_4">
+								<div id="camera_view_2" class="camera_container"></div>
+								<img id="camera_view_result_2" class="camera_container_result" style="display:none"></img>
+							</div>
+						</td>
+					  </tr>
+					  <tr id="camera_tab_2">
+						<td id="camera_tab_2_1">					
+
+							<div id="camera_3" class="camera_4">
+								<div id="camera_view_3" class="camera_container"></div>
+								<img id="camera_view_result_3" class="camera_container_result" style="display:none"></img>
+							</div>
+						</td>
+						<td id="camera_tab_2_2">
+							<div id="camera_4" class="camera_4">
+								<div id="camera_view_4" class="camera_container"></div>
+								<img id="camera_view_result_4" class="camera_container_result" style="display:none"></img>
+							</div>
+						</td>
+					  </tr>
+				  </table>
+				  <div id="photo_countdown"></div>  
+				</div>
+				
+			</div>
+			<div id="effect_info"/></div>
+			<div id="photo_result" style="display:none"></div> <!-- Les photos -->
+			<div id="photo_result_blank" style="display:none"></div> <!-- Les photos sans les effets pour sauvegarde -->
+			<div id="camera_flash"></div> <!-- Le flash -->
+		</div>
+
+		<div id="preview" style="display:none">
+			<img id="photo_preview_full" class="photo_preview"></img>
+		</div>
+		
+		<div id="coverflow" class='coverflow_show'>
+			<div id="photo_galerie">
+			</div>
+		</div>
+	
+		<div id="validate_delete" style="display:none">
+			<div>Supprimer ?</div>
+			<img id="photo_preview_delete" class="photo_preview"></img>
+		</div>
+		
+		<div id="validate_print" style="display:none">
+			<div>Imprimer ?</div>
+			<img id="photo_preview_print" class="photo_preview"></img>
+		</div>
+	</div>
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+		<script language="JavaScript" type="text/javascript" src="./lib/jquery-1.8.2.min.js"></script>
+		<script language="JavaScript" type="text/javascript" src="./lib/glfx.js"></script>
+		<script language="JavaScript" type="text/javascript" src="./lib/counter_mini.js"></script>
+		
+		<script language="JavaScript" type="text/javascript" src="./lib/galleria-1.3b.js"></script>
+
+		
+		<script language="JavaScript" type="text/javascript" src="./js/mycoverflow.js"></script>
+		<script language="JavaScript" type="text/javascript" src="./js/common.js"></script>
+		<script language="JavaScript" type="text/javascript" src="./js/camera_effect.js"></script>
+		<script language="JavaScript" type="text/javascript" src="./js/camera_action.js"></script>
+		<script language="JavaScript" type="text/javascript" src="./js/countdown.js"></script>
+		<script language="JavaScript" type="text/javascript" src="./js/keypress.js"></script>
+		<script language="JavaScript" type="text/javascript" src="./js/printdelete.js"></script>
+		<script language="JavaScript" type="text/javascript" src="./js/arduino.js"></script>
+    <script>
+    $(document).ready(function() {
+        init();
+		arduinoWrite("led_off");
+    });
+    </script>
+  </body>
+</html>
