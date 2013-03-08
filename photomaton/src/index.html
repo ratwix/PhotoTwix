@@ -11,14 +11,15 @@
     <!-- Le styles -->
 	<link href="./css/preview_style.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
-	
+	<link href="./css/progress-bar.css" rel="stylesheet">
 	
   </head>
 
   <body onkeypress="detectkey(event)">
 	<div id="photomaton">
 		<div id="camera" style="display:none">
-			<div id="camera_info" class="camera_info"> <!-- Contient les infos sur ce qui est actuellement affiché -->
+			<div id="camera_info" class="camera_info polaroid"> <!-- Contient les infos sur ce qui est actuellement affiché -->
+				<div id="effect_info"/></div>
 				<div id="camera_view"> <!-- Vision de la camera -->
 				  <video id="camera_direct" autoplay onclick="change_filter()" style="display:none; height: auto; width: auto"></video>
 				  
@@ -30,6 +31,7 @@
 								<img id="camera_view_result_1" class="camera_container_result" style="display:none"></img>
 							</div>
 						</td>
+						
 						<td id="camera_tab_1_2">
 							<div id="camera_2" class="camera_4">
 								<div id="camera_view_2" class="camera_container"></div>
@@ -37,6 +39,7 @@
 							</div>
 						</td>
 					  </tr>
+					  
 					  <tr id="camera_tab_2">
 						<td id="camera_tab_2_1">					
 
@@ -57,7 +60,7 @@
 				</div>
 				
 			</div>
-			<div id="effect_info"/></div>
+			
 			<div id="photo_result" style="display:none"></div> <!-- Les photos -->
 			<div id="photo_result_blank" style="display:none"></div> <!-- Les photos sans les effets pour sauvegarde -->
 			<div id="camera_flash"></div> <!-- Le flash -->
@@ -66,12 +69,7 @@
 		<div id="preview" style="display:none">
 			<img id="photo_preview_full" class="photo_preview"></img>
 		</div>
-		
-		<div id="coverflow" class='coverflow_show'>
-			<div id="photo_galerie">
-			</div>
-		</div>
-	
+
 		<div id="validate_delete" style="display:none">
 			<div>Supprimer ?</div>
 			<img id="photo_preview_delete" class="photo_preview"></img>
@@ -80,6 +78,18 @@
 		<div id="validate_print" style="display:none">
 			<div>Imprimer ?</div>
 			<img id="photo_preview_print" class="photo_preview"></img>
+		</div>
+		
+		<div id="copy_usb" style="display:none">
+			<span>Copie en cour</span>	
+			<div class="meter animate">
+				<span style="width: 70%"><span>  Copie de 3 / 100</span></span>
+			</div>
+		</div>
+		
+		<div id="coverflow" class='coverflow_show'>
+			<div id="photo_galerie">
+			</div>
 		</div>
 	</div>
     <!-- Le javascript
@@ -90,7 +100,6 @@
 		<script language="JavaScript" type="text/javascript" src="./lib/counter_mini.js"></script>
 		
 		<script language="JavaScript" type="text/javascript" src="./lib/galleria-1.3b.js"></script>
-
 		
 		<script language="JavaScript" type="text/javascript" src="./js/mycoverflow.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./js/common.js"></script>

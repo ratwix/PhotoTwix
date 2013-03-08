@@ -65,10 +65,11 @@
 	
 	//on écrit toute les photos
 	//les minis
+	/*
 	for ($i = 0; $i < count($photo_decode_array); $i++) {
 		imagepng($photo_decode_array[$i], $root_photo_mini."/".$d.'_'.$i.'.png');
 	}
-	
+	*/
 	for ($i = 0; $i < count($photo_decode_array_blank); $i++) {
 		imagepng($photo_decode_array_blank[$i], $root_photo_blank."/".$d.'_'.$i.'.png');
 	}

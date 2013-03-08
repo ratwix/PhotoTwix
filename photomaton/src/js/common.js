@@ -67,6 +67,7 @@ function hideAll() {
 	$("#preview")[0].style.display='none';
 	$("#validate_delete")[0].style.display='none';
 	$("#validate_print")[0].style.display='none';
+	$("#copy_usb")[0].style.display='none';
 	$("#coverflow")[0].setAttribute('class', 'coverflow_hide');
 }
 

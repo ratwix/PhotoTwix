@@ -77,7 +77,7 @@
 	position: absolute;
 	right:50%;
 	top:50%;
-	margin-top:-400px; /* Modifier si on modifie la taille de la camera. height / 2 */
+	margin-top:-430px; /* Modifier si on modifie la taille de la camera. height / 2 */
 	margin-right:-300px;
 }
 
@@ -87,14 +87,6 @@
 	top:50%;
 	margin-top:-200px; /* Modifier si on modifie la taille de la camera. height / 2 */
 	margin-right:-300px;
-}
-
-#effect_info {
-	position: absolute;
-	top:50%;
-	right:20px;
-	color:white;
-	font-size:40px;
 }
 
 #photo_countdown {
@@ -231,4 +223,19 @@
 .counter_marker {
 	position: relative;
 	z-index: 10;
+}
+ 
+.polaroid #camera_view {
+  border: 10px solid #fff;
+  border-bottom: 45px solid #fff;
+  box-shadow: 12px 12px 12px 3px rgba(0,0,0,0.5);
+}
+ 
+.polaroid #effect_info {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  bottom: 10px;
+  font: 400 30px/1 'Kaushan Script', cursive;
+  color: #888;
 }

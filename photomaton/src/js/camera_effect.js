@@ -3,7 +3,7 @@
   */
 	var effect_filter = [];
 	
-	var refresh_rate = 100;
+	var refresh_rate = 40;
 	
 	var current_texture = null;
 	var current_texture2 = null;
@@ -769,27 +769,30 @@
 		var canvas3 = document.getElementById('camera_webgl3');
 		var canvas4 = document.getElementById('camera_webgl4');
 
+		var cam = $("#camera")[0];
+		
 		interval_id = setInterval(function() {
-			if ("" != canvas) {
-				effect(canvas);
+			if (cam.style.display == 'block') { //on ne met a jour l'affichage que si on doit l'afficher
+				if ("" != canvas) {
+					effect(canvas);
+				}
+		
+				if ("" != canvas2) {
+					current_texture2.loadContentsOf(canvas);
+					canvas2.draw(current_texture2).update();
+					//effect(canvas2);
+				}
+				if ("" != canvas3) {
+					//effect(canvas3);
+					current_texture3.loadContentsOf(canvas);
+					canvas3.draw(current_texture3).update();
+				}
+				if ("" != canvas4) {
+					//effect(canvas4);
+					current_texture4.loadContentsOf(canvas);
+					canvas4.draw(current_texture4).update();
+				}
 			}
-	
-			if ("" != canvas2) {
-				current_texture2.loadContentsOf(canvas);
-				canvas2.draw(current_texture2).update();
-				//effect(canvas2);
-			}
-			if ("" != canvas3) {
-				//effect(canvas3);
-				current_texture3.loadContentsOf(canvas);
-				canvas3.draw(current_texture3).update();
-			}
-			if ("" != canvas4) {
-				//effect(canvas4);
-				current_texture4.loadContentsOf(canvas);
-				canvas4.draw(current_texture4).update();
-			}
-
 		}, refresh_rate);
 	}	
 	
