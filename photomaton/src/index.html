@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Photomaton</title>
     <meta name="Photomaton" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -81,10 +81,11 @@
 		</div>
 		
 		<div id="copy_usb" style="display:none">
-			<span>Copie en cour</span>	
-			<div class="meter animate">
-				<span style="width: 70%"><span>  Copie de 3 / 100</span></span>
+			<span id="copy_txt">Copie en cour</span>	
+			<div id="copy_progress_bar" class="meter animate">
+				<span id="copy_progress_value"><span></span></span>
 			</div>
+			<span id="copy_progress_value_txt"></span>
 		</div>
 		
 		<div id="coverflow" class='coverflow_show'>
@@ -109,6 +110,7 @@
 		<script language="JavaScript" type="text/javascript" src="./js/keypress.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./js/printdelete.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./js/arduino.js"></script>
+		<script language="JavaScript" type="text/javascript" src="./js/copyusb.js" charset="utf-8"></script>
     <script>
     $(document).ready(function() {
         init();
