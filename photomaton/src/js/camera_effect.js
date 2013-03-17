@@ -127,7 +127,7 @@
 			$("#camera_4")[0].setAttribute("class", "camera_1");
 			
 			//On centre la photo (a peu pres...)
-			$("#camera_info")[0].setAttribute("class", "camera_info_2");
+			$("#camera_info")[0].setAttribute("class", "camera_info_2 polaroid");
 		} else {
 			g_nb_take_photo = 4;
 			g_camRation = 1.5; //1,5 fois plus haut que long
@@ -149,7 +149,7 @@
 			$("#camera_4")[0].setAttribute("class", "camera_4");
 			
 			//On centre la photo (a peu pres...)
-			$("#camera_info")[0].setAttribute("class", "camera_info");
+			$("#camera_info")[0].setAttribute("class", "camera_info polaroid");
 		}
 	}
 	
@@ -204,7 +204,7 @@
 		arduinoWrite("ledFx_off");
 		
 		applyEffect(effect);
-		
+		effect_id = 1; //pour la reinitialisation
 		$("#effect_info").html("Normal");
 	}
 	
