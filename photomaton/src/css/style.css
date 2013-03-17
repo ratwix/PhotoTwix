@@ -21,6 +21,7 @@
 
 #camera_tab td{
 	padding:0px;
+	border: solid white 5px
 }
 
 .camera_4 {
@@ -100,6 +101,7 @@
 	font-family: Comic Sans, Comic Sans MS, cursive;
 	font-size: 250px;
 	color: white;
+	text-shadow: 5px 5px 0px #000;
 	/*
 	background-color: white;
 	display: block;
