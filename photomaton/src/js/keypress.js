@@ -26,12 +26,6 @@ KEY_USB		= "s".charCodeAt(0);
 				
  }
  
-  function showCopy() {
-	$("#copy_usb")[0].style.display = 'block';
-	
-	
- }
- 
  function detectkey(event) {
 	var keyCode = event.keyCode;
 	
@@ -118,7 +112,16 @@ KEY_USB		= "s".charCodeAt(0);
 	
 	//Change l'effet
 	if (keyCode == KEY_USB) {
-		hideAll();
-		showCopy();
+		if ($("#copy_usb")[0].style.display == 'none') {
+			hideAll();
+			showCopy();
+			g_copy_progress = false; //TODO a changer de place
+		} else {
+			if (g_copy_progress == false) {
+				hideAll();
+				showCopyStart();
+			}
+		}
+
 	}
  }

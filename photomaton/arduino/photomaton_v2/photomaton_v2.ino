@@ -6,7 +6,7 @@
 #define WIRE_LED_1  10
 #define WIRE_LED_2  12
 #define WIRE_LED_3  11
-#define WIRE_LED_EFFECT 9
+#define WIRE_USB    9
 
 #define WIRE_POT    23
 #define WIRE_PHOTO  22
@@ -29,7 +29,7 @@
 #define KEY_DEL         KEY_D
 #define KEY_EFFECT_PLUS KEY_I
 #define KEY_EFFECT_MIN  KEY_U
-
+#define KEY_USB         KEY_S
 
 Bounce buttonPhoto = Bounce(WIRE_PHOTO, 10);
 Bounce buttonEffect = Bounce(WIRE_EFFECT, 10);
@@ -38,6 +38,7 @@ Bounce buttonPrev = Bounce(WIRE_PREV, 10);
 Bounce buttonNext = Bounce(WIRE_NEXT, 10);
 Bounce buttonPrint = Bounce(WIRE_PRINT, 10);
 Bounce buttonDelete = Bounce(WIRE_DEL, 10);
+Bounce buttonUsb = Bounce(WIRE_USB, 10);
 
 static int lastPotValue = -1;
 
@@ -49,7 +50,7 @@ void setup() {
   pinMode(WIRE_LED_1, OUTPUT);
   pinMode(WIRE_LED_2, OUTPUT);
   pinMode(WIRE_LED_3, OUTPUT);
-  pinMode(WIRE_LED_EFFECT, OUTPUT);
+  pinMode(WIRE_USB, INPUT_PULLUP);
   pinMode(WIRE_POT, INPUT);
   pinMode(WIRE_PHOTO, INPUT_PULLUP);
   pinMode(WIRE_EFFECT, INPUT_PULLUP);
@@ -77,6 +78,7 @@ void loop() {
   buttonPress(&buttonNext, KEY_NEXT);
   buttonPress(&buttonPrint, KEY_PRINT);
   buttonPress(&buttonDelete, KEY_DEL);
+  buttonPress(&buttonUsb, KEY_USB);
   //On test un changement du curseur
   testChangeEffect();
 }
@@ -126,15 +128,7 @@ void readSerial() {
              digitalWrite(WIRE_LED_2, HIGH);
              digitalWrite(WIRE_LED_3, HIGH);  
              break;
-           }
-          case '4' : {
-             digitalWrite(WIRE_LED_EFFECT, HIGH);
-             break;
-          }
-          case '5' : {
-             digitalWrite(WIRE_LED_EFFECT, LOW);
-             break;
-          }    
+           } 
       }
   }
 }

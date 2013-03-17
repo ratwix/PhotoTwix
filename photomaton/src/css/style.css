@@ -241,3 +241,27 @@
   font: 400 30px/1 'Kaushan Script', cursive;
   color: #888;
 }
+
+#copy_txt {
+	width: 100%;
+	text-align: center;
+	top: 100px;
+	font: 400 50px/1 'Kaushan Script', cursive;
+	color: white;
+	position: absolute;
+}
+
+#copy_progress_bar {
+	top: 200px;
+	width: 80%;
+	left: 10%;
+}
+
+#copy_progress_value_txt {
+	width: 100%;
+	text-align: center;
+	top: 320px;
+	font: 400 50px/1 'Kaushan Script', cursive;
+	color: white;
+	position: absolute;
+}
