@@ -11,7 +11,7 @@
     <!-- Le styles -->
 	<link href="./css/preview_style.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
-	
+	<link href="./css/progress-bar.css" rel="stylesheet">
 	
   </head>
 
@@ -67,10 +67,7 @@
 			<img id="photo_preview_full" class="photo_preview"></img>
 		</div>
 		
-		<div id="coverflow" class='coverflow_show'>
-			<div id="photo_galerie">
-			</div>
-		</div>
+
 	
 		<div id="validate_delete" style="display:none">
 			<div>Supprimer ?</div>
@@ -81,6 +78,17 @@
 			<div>Imprimer ?</div>
 			<img id="photo_preview_print" class="photo_preview"></img>
 		</div>
+		
+		<div id="copy_usb" style="display:none">
+			<div class="meter animate">
+				<span style="width: 50%"><span>Copie de 3 / 100</span></span>
+			</div>
+		</div>
+		
+		<div id="coverflow" class='coverflow_show'>
+			<div id="photo_galerie">
+			</div>
+		</div>
 	</div>
     <!-- Le javascript
     ================================================== -->
@@ -90,7 +98,6 @@
 		<script language="JavaScript" type="text/javascript" src="./lib/counter_mini.js"></script>
 		
 		<script language="JavaScript" type="text/javascript" src="./lib/galleria-1.3b.js"></script>
-
 		
 		<script language="JavaScript" type="text/javascript" src="./js/mycoverflow.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./js/common.js"></script>

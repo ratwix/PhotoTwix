@@ -18,34 +18,34 @@
 		//Les effets glfx
 		effect_filter.push(null_effect);
 		effect_filter.push(swirl_effect);
-		effect_filter.push(fisheyes_effect);
+		//effect_filter.push(fisheyes_effect);
 		effect_filter.push(pinch_effect);
 		//effect_filter.push(bulb_pinch_effect);		
-		effect_filter.push(square_effect);
+		//effect_filter.push(square_effect);
 		effect_filter.push(grayscale_effect);
 		effect_filter.push(gotham_effect);
 		effect_filter.push(sepia_effect);
-		effect_filter.push(saturation_effect);
+		//effect_filter.push(saturation_effect);
 		effect_filter.push(color_effect);
 		effect_filter.push(vintage_effect);			
 		effect_filter.push(nashville_effect);
 		effect_filter.push(california_gold_effect);
-		effect_filter.push(country_effect);
-		effect_filter.push(desert_effect);
+		//effect_filter.push(country_effect);
+		//effect_filter.push(desert_effect);
 		effect_filter.push(lord_kevin_effect);
-		effect_filter.push(brannan_effect);
+		//effect_filter.push(brannan_effect);
 		effect_filter.push(hefe_effect);
 		effect_filter.push(nashville_effect);
-		effect_filter.push(crossprocess_effect);
+		//effect_filter.push(crossprocess_effect);
 		effect_filter.push(mille_effect);
 		effect_filter.push(portraesque_effect);	
-		effect_filter.push(proviaesque_effect);	
-		effect_filter.push(alien_burn_effect);
-		effect_filter.push(dreamWorld_effect);	
-		effect_filter.push(valviaesque_effect);
-		effect_filter.push(lumo_effect);
-		effect_filter.push(hollywood_effect);	
-		effect_filter.push(xpro_effect);
+		//effect_filter.push(proviaesque_effect);	
+		//effect_filter.push(alien_burn_effect);
+		//effect_filter.push(dreamWorld_effect);	
+		//effect_filter.push(valviaesque_effect);
+		//effect_filter.push(lumo_effect);
+		//effect_filter.push(hollywood_effect);	
+		//effect_filter.push(xpro_effect);
 		
 		//Initialise la camera une première fois
 		//On ajoute le canvas dans lequel la camera va s'afficher

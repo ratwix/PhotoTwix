@@ -3,19 +3,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define WIRE_LED_1  10
-#define WIRE_LED_2  12
-#define WIRE_LED_3  11
-#define WIRE_LED_EFFECT 9
+#define WIRE_LED_1  1
+#define WIRE_LED_2  2
 
-#define WIRE_POT    23
-#define WIRE_PHOTO  22
-#define WIRE_EFFECT 21
-#define WIRE_CHANGE 20
-#define WIRE_NEXT   19
-#define WIRE_PREV   18
-#define WIRE_PRINT  17
-#define WIRE_DEL    16
+#define WIRE_LED_EFFECT 4
+
+#define WIRE_USB    3
+#define WIRE_PHOTO  11
+#define WIRE_EFFECT 12
+#define WIRE_CHANGE 13
+#define WIRE_NEXT   14
+#define WIRE_PREV   15
+#define WIRE_PRINT  16
+#define WIRE_DEL    17
 
 #define WIRE_POT_1  5
 #define WIRE_POT_2  6
@@ -29,6 +29,7 @@
 #define KEY_DEL         KEY_D
 #define KEY_EFFECT_PLUS KEY_I
 #define KEY_EFFECT_MIN  KEY_U
+#define KEY_EFFECT_USB  KEY_S
 
 
 Bounce buttonPhoto = Bounce(WIRE_PHOTO, 10);
@@ -38,6 +39,7 @@ Bounce buttonPrev = Bounce(WIRE_PREV, 10);
 Bounce buttonNext = Bounce(WIRE_NEXT, 10);
 Bounce buttonPrint = Bounce(WIRE_PRINT, 10);
 Bounce buttonDelete = Bounce(WIRE_DEL, 10);
+Bounce buttonUsb = Bounce(WIRE_USB, 10);
 
 static int lastPotValue = -1;
 
@@ -48,9 +50,8 @@ void setup() {
   Serial.begin(9600);
   pinMode(WIRE_LED_1, OUTPUT);
   pinMode(WIRE_LED_2, OUTPUT);
-  pinMode(WIRE_LED_3, OUTPUT);
+
   pinMode(WIRE_LED_EFFECT, OUTPUT);
-  pinMode(WIRE_POT, INPUT);
   pinMode(WIRE_PHOTO, INPUT_PULLUP);
   pinMode(WIRE_EFFECT, INPUT_PULLUP);
   pinMode(WIRE_CHANGE, INPUT_PULLUP);
@@ -58,6 +59,7 @@ void setup() {
   pinMode(WIRE_PREV, INPUT_PULLUP);
   pinMode(WIRE_PRINT, INPUT_PULLUP);
   pinMode(WIRE_DEL, INPUT_PULLUP);
+  pinMode(WIRE_USB, INPUT_PULLUP);
 
   effect.write(0);
 }
@@ -77,6 +79,7 @@ void loop() {
   buttonPress(&buttonNext, KEY_NEXT);
   buttonPress(&buttonPrint, KEY_PRINT);
   buttonPress(&buttonDelete, KEY_DEL);
+  buttonPress(&buttonUsb, KEY_EFFECT_USB);
   //On test un changement du curseur
   testChangeEffect();
 }
@@ -106,25 +109,21 @@ void readSerial() {
            case '0' : {
              digitalWrite(WIRE_LED_1, LOW);
              digitalWrite(WIRE_LED_2, LOW);
-             digitalWrite(WIRE_LED_3, LOW);
              break;
            } 
            case '1' : {
              digitalWrite(WIRE_LED_1, HIGH);
-             digitalWrite(WIRE_LED_2, LOW);
-             digitalWrite(WIRE_LED_3, LOW);             
+             digitalWrite(WIRE_LED_2, LOW);             
              break;
            }    
            case '2' : {
              digitalWrite(WIRE_LED_1, HIGH);
-             digitalWrite(WIRE_LED_2, HIGH);
-             digitalWrite(WIRE_LED_3, LOW);  
+             digitalWrite(WIRE_LED_2, HIGH);  
              break;
            }
            case '3' : {
              digitalWrite(WIRE_LED_1, HIGH);
-             digitalWrite(WIRE_LED_2, HIGH);
-             digitalWrite(WIRE_LED_3, HIGH);  
+             digitalWrite(WIRE_LED_2, HIGH);  
              break;
            }
           case '4' : {

@@ -1,7 +1,7 @@
  //Les variables globales
  
  var g_nb_take_photo = 4; 	//nombre de photos a prendre
- var g_photo_interval = 2000; //interval entre les photos
+ var g_photo_interval = 4000; //interval entre les photos
  
  var g_camHeight = 480;
  var g_camWidth = 640;
@@ -47,7 +47,8 @@ function initCamera() {
 		//On récupère la camera
 		navigator.getUserMedia({video: {
 										mandatory: {
-											maxWidth:1280
+											minWidth: 1280,
+											minHeight: 720
 										}}}, 
 		
 		function(localMediaStream) {

@@ -24,25 +24,13 @@ function startCountdown() {
 			g_count_sound.play();
 			$("#photo_countdown").show().delay(200).fadeOut(550);
 			//photo_countdown.setValue(current_delay, 600);
-			
-			if (current_delay == 3) { //On allume 1 lumiere
-				arduinoWrite("led1_on");
-			}
-			
-			if (current_delay == 2) {
-				arduinoWrite("led2_on");
-			}
-			
-			if (current_delay == 1) {
-				arduinoWrite("led3_on");
-			}
+
 			
 			if (current_delay == 0) {
 				clearInterval(countdown_timer);
 				current_delay = g_countdown_delay;
 				countdown.style.display = 'none';
 				//On prends la photo
-				arduinoWrite("led_off");
 				take_photo();
 			}
 		}

@@ -8,7 +8,8 @@ KEY_PRINT	= "p".charCodeAt(0);
 KEY_DEL		= "d".charCodeAt(0);
 KEY_TEST	= "t".charCodeAt(0); 
 KEY_AD_EFF	= "u".charCodeAt(0);
-KEY_MN_EFF	= "i".charCodeAt(0);  
+KEY_MN_EFF	= "i".charCodeAt(0); 
+KEY_USB		= "s".charCodeAt(0);  
  
  function showCamera() {
 	$("#camera")[0].style.display = 'block';	//On affiche la camera
@@ -23,6 +24,12 @@ KEY_MN_EFF	= "i".charCodeAt(0);
 	$("#camera_view_result_3")[0].style.display = 'none';	//On affiche la camera
 	$("#camera_view_result_4")[0].style.display = 'none';	//On affiche la camera
 				
+ }
+ 
+  function showCopy() {
+	$("#copy_usb")[0].style.display = 'block';
+	
+	
  }
  
  function detectkey(event) {
@@ -109,5 +116,9 @@ KEY_MN_EFF	= "i".charCodeAt(0);
 		change_filter();
 	}
 	
-
+	//Change l'effet
+	if (keyCode == KEY_USB) {
+		hideAll();
+		showCopy();
+	}
  }
