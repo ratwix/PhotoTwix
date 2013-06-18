@@ -80,6 +80,8 @@ function requestMergePhoto() {
 	var thumb = $(".photo_thumb");
 	var thumb_blank = $(".photo_thumb_blank");
 	
+	hideAll(); 
+	
 	for (var i = 0; i < thumb.length; i++) {
 		photoArray[i] = thumb[i].src;
 	}
@@ -115,7 +117,7 @@ function handleMergePhoto(data) {
 	
 	Galleria.get(0).push(data);
 	g_photo_in_action = false; //On a fini de prendre une photo
-	hideAll(); 
+
 	$("#preview")[0].style.display='block';
 	
 } 

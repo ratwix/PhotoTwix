@@ -12,7 +12,7 @@ function startCountdown() {
 	
 	var countdown = $("#photo_countdown")[0];
 	
-	countdown.innerHTML = "3";
+	countdown.innerHTML = "!";
 	countdown.style.display = 'block';
 	
 	//photo_countdown.setValue(g_countdown_delay, 500);

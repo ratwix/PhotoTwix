@@ -118,7 +118,16 @@ KEY_USB		= "s".charCodeAt(0);
 	
 	//Change l'effet
 	if (keyCode == KEY_USB) {
-		hideAll();
-		showCopy();
+		if ($("#copy_usb")[0].style.display == 'none') {
+			hideAll();
+			showCopy();
+			g_copy_progress = false; //TODO a changer de place
+		} else {
+			if (g_copy_progress == false) {
+				hideAll();
+				showCopyStart();
+			}
+		}
+
 	}
  }

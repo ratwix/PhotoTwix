@@ -3,7 +3,7 @@
   */
 	var effect_filter = [];
 	
-	var refresh_rate = 100;
+	var refresh_rate = 40;
 	
 	var current_texture = null;
 	var current_texture2 = null;
@@ -127,7 +127,7 @@
 			$("#camera_4")[0].setAttribute("class", "camera_1");
 			
 			//On centre la photo (a peu pres...)
-			$("#camera_info")[0].setAttribute("class", "camera_info_2");
+			$("#camera_info")[0].setAttribute("class", "camera_info_2 polaroid");
 		} else {
 			g_nb_take_photo = 4;
 			g_camRation = 1.5; //1,5 fois plus haut que long
@@ -149,7 +149,7 @@
 			$("#camera_4")[0].setAttribute("class", "camera_4");
 			
 			//On centre la photo (a peu pres...)
-			$("#camera_info")[0].setAttribute("class", "camera_info");
+			$("#camera_info")[0].setAttribute("class", "camera_info polaroid");
 		}
 	}
 	
@@ -204,7 +204,7 @@
 		arduinoWrite("ledFx_off");
 		
 		applyEffect(effect);
-		
+		effect_id = 1; //pour la reinitialisation
 		$("#effect_info").html("Normal");
 	}
 	
@@ -769,27 +769,30 @@
 		var canvas3 = document.getElementById('camera_webgl3');
 		var canvas4 = document.getElementById('camera_webgl4');
 
+		var cam = $("#camera")[0];
+		
 		interval_id = setInterval(function() {
-			if ("" != canvas) {
-				effect(canvas);
+			if (cam.style.display == 'block') { //on ne met a jour l'affichage que si on doit l'afficher
+				if ("" != canvas) {
+					effect(canvas);
+				}
+		
+				if ("" != canvas2) {
+					current_texture2.loadContentsOf(canvas);
+					canvas2.draw(current_texture2).update();
+					//effect(canvas2);
+				}
+				if ("" != canvas3) {
+					//effect(canvas3);
+					current_texture3.loadContentsOf(canvas);
+					canvas3.draw(current_texture3).update();
+				}
+				if ("" != canvas4) {
+					//effect(canvas4);
+					current_texture4.loadContentsOf(canvas);
+					canvas4.draw(current_texture4).update();
+				}
 			}
-	
-			if ("" != canvas2) {
-				current_texture2.loadContentsOf(canvas);
-				canvas2.draw(current_texture2).update();
-				//effect(canvas2);
-			}
-			if ("" != canvas3) {
-				//effect(canvas3);
-				current_texture3.loadContentsOf(canvas);
-				canvas3.draw(current_texture3).update();
-			}
-			if ("" != canvas4) {
-				//effect(canvas4);
-				current_texture4.loadContentsOf(canvas);
-				canvas4.draw(current_texture4).update();
-			}
-
 		}, refresh_rate);
 	}	
 	

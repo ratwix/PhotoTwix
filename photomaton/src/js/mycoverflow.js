@@ -25,7 +25,7 @@ function handleRequestAllPhoto(data) {
 	Galleria.loadTheme('./lib/themes/classic/galleria.classic.js');
 	Galleria.configure({
 		carouselSpeed: 100,
-		transition: 'none'
+		transition: 'slide'
 	});
     Galleria.run('#photo_galerie');
 }

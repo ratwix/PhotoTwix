@@ -3,12 +3,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 #define WIRE_LED_1  1
 #define WIRE_LED_2  2
 
 #define WIRE_LED_EFFECT 4
 
-#define WIRE_USB    3
+#define WIRE_USB    3 
 #define WIRE_PHOTO  11
 #define WIRE_EFFECT 12
 #define WIRE_CHANGE 13
