@@ -18,6 +18,7 @@
   <body onkeypress="detectkey(event)">
 	<div id="photomaton">
 		<div id="camera" style="display:none">
+			<div id="piecounter"> </div> <!-- Contient le countdown entre 2 photos -->
 			<div id="camera_info" class="camera_info polaroid"> <!-- Contient les infos sur ce qui est actuellement affiché -->
 				<div id="effect_info"/></div>
 				<div id="camera_view"> <!-- Vision de la camera -->
@@ -99,8 +100,8 @@
 		<script language="JavaScript" type="text/javascript" src="./lib/jquery-1.8.2.min.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./lib/glfx.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./lib/counter_mini.js"></script>
-		
 		<script language="JavaScript" type="text/javascript" src="./lib/galleria-1.3b.js"></script>
+		<script language="JavaScript" type="text/javascript" src="./lib/jquery.piechartcountdown.js"></script>
 		
 		<script language="JavaScript" type="text/javascript" src="./js/mycoverflow.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./js/common.js"></script>

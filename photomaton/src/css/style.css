@@ -5,10 +5,10 @@
     left:0;
 	width: 100%;
 	height: 100%;
-	background-image:url(../img/parquet03.jpg);
+	background-image:url(../img/back-photo3.jpg);
 	cursor:none;
 	overflow-y: hidden; 
-	overflow: hidden; 
+	overflow: hidden;
 }
 
 #camera_view {
@@ -88,6 +88,12 @@
 	top:50%;
 	margin-top:-380px; /* Modifier si on modifie la taille de la camera. height / 2 */
 	margin-right:-500px;
+}
+
+#piecounter {
+	position: fixed;
+	top:40px;
+	left:40px;
 }
 
 #photo_countdown {

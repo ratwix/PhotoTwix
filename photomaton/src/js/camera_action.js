@@ -29,7 +29,17 @@ function take_photo() {
 			g_photo_sound.play();
 			$("#camera_flash").show().delay(250).fadeOut(250);
 			
-
+//On affiche un countdown entre 2 photos
+			$('#piecounter').pieChartCountDown({
+              time : g_photo_interval / 1000,
+              color : '#C9C1C4',
+              background: '#5E5E5E',
+              size : 150,
+              border: 8,
+              infinite : false,
+			});
+			
+			
 			var w = 0; 
 			var h = 0; 
 			var x = 0; 
@@ -58,7 +68,13 @@ function take_photo() {
 			img_blank.setAttribute("class", "photo_thumb_blank");
 			img_blank.getContext('2d').drawImage(video_direct, x, y, w, h, 0, 0, w, h);
 			
+
+			
+			
 			photos_blank.appendChild(img_blank);
+			
+			
+			
 			
 			$("#camera_view_result_" + current_photo)[0].src = dataURL;
 			$("#camera_view_" + current_photo)[0].style.display='none';
