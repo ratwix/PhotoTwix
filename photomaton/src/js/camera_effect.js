@@ -37,8 +37,8 @@
 		effect_filter.push(hefe_effect);
 		effect_filter.push(nashville_effect);
 		//effect_filter.push(crossprocess_effect);
-		effect_filter.push(mille_effect);
-		effect_filter.push(portraesque_effect);	
+		//effect_filter.push(mille_effect);
+		//effect_filter.push(portraesque_effect);	
 		//effect_filter.push(proviaesque_effect);	
 		//effect_filter.push(alien_burn_effect);
 		//effect_filter.push(dreamWorld_effect);	

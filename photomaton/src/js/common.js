@@ -4,7 +4,7 @@
  var g_photo_interval = 4000; //interval entre les photos
  
  var g_camHeight = 480;
- var g_camWidth = 640;
+ var g_camWidth = 720;
  var g_camRation = 1.5;
  var g_camRationDirection = 'h'; //h si le ration est applique horizontalement; v si il est appliqué verticalement
  
@@ -47,8 +47,8 @@ function initCamera() {
 		//On récupère la camera
 		navigator.getUserMedia({video: {
 										mandatory: {
-											minWidth: 1280,
-											minHeight: 720
+											minWidth: 720,
+											minHeight: 480
 										}}}, 
 		
 		function(localMediaStream) {

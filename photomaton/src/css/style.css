@@ -25,14 +25,14 @@
 }
 
 .camera_4 {
-	width:332px; 
-	height:500px;
+	width:300px; 
+	height:450px;
 }
 
 .video_4 {
 	position: relative;
 	height: 100%;
-	left:-296px;
+	left:-150px;
 }
 
 .camera_2 {
@@ -78,7 +78,7 @@
 	position: absolute;
 	right:50%;
 	top:50%;
-	margin-top:-430px; /* Modifier si on modifie la taille de la camera. height / 2 */
+	margin-top:-480px; /* Modifier si on modifie la taille de la camera. height / 2 */
 	margin-right:-300px;
 }
 
@@ -86,8 +86,8 @@
 	position: absolute;
 	right:50%;
 	top:50%;
-	margin-top:-200px; /* Modifier si on modifie la taille de la camera. height / 2 */
-	margin-right:-300px;
+	margin-top:-380px; /* Modifier si on modifie la taille de la camera. height / 2 */
+	margin-right:-500px;
 }
 
 #photo_countdown {
