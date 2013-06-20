@@ -31,6 +31,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     
     var DEFAULT_VALUE = 360;
     
+	var base_time = 0;
+	
     var DEFAULT_SETTINGS = {
         seconds: 10,
         color: 'rgba(255, 255, 255, 0.8)',
@@ -74,6 +76,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 if (this.current_value <= 0) {
                     this.current_value = DEFAULT_VALUE;
                 }
+				this.base_time = new Date().getTime();
                 this.interval_id = setInterval($.proxy(this.run_timer, this), PIE_TIMER_INTERVAL);
                 this.is_paused = false;
             }
@@ -88,8 +91,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
         run_timer: function () {
             if (this.canvas.getContext) {
-
-                this.current_value -= (DEFAULT_VALUE / this.settings.seconds) / 9;
+				var current_delay = (new Date().getTime()) - this.base_time;
+				var current_angle = current_delay * DEFAULT_VALUE / (this.settings.seconds * 1000);
+				this.current_value = DEFAULT_VALUE - current_angle;
 
                 if (this.current_value <= 0) {
                     clearInterval(this.interval_id);
