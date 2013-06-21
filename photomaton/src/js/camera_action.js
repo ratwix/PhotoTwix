@@ -30,6 +30,7 @@ function take_photo() {
 			$("#camera_flash").show().delay(250).fadeOut(250);
 			
 //On affiche un countdown entre 2 photos
+/*
 			$('#piecounter').pieChartCountDown({
               time : g_photo_interval / 1000,
               color : '#C9C1C4',
@@ -38,7 +39,15 @@ function take_photo() {
               border: 8,
               infinite : false,
 			});
+			*/
 			
+			$('#piecounter').pietimer({
+				seconds: g_photo_interval / 1000,
+				color: '#5E5E5E',
+				height: 150,
+				width: 150
+			});
+			$('#piecounter').pietimer('start');
 			
 			var w = 0; 
 			var h = 0; 

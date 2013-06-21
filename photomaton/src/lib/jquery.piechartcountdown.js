@@ -1,18 +1,190 @@
 if( !CSSAnimation || !CSSAnimation.version || CSSAnimation.version < 0.2 ) {
-    /*
-     CSSAnimation v0.2
-     Provides 'cssAnimationKeyframe' events for keyframe animations.
-     http://www.joelambert.co.uk/cssa
+	/**
+	 * @preserve CSSAnimation v0.2
+	 * Provides 'cssAnimationKeyframe' events for keyframe animations.
+	 * http://www.joelambert.co.uk/cssa
+	 *
+	 * Copyright 2011, Joe Lambert. All rights reserved
+	 * Free to use under the MIT license.
+	 * http://www.opensource.org/licenses/mit-license.php
+	 */
 
-     Copyright 2011, Joe Lambert. All rights reserved
-     Free to use under the MIT license.
-     http://www.opensource.org/licenses/mit-license.php
-     */
-    var CSSAnimation={version:"0.2"};CSSAnimation.find=function(a){for(var i=document.styleSheets,g=i.length-1;g>=0;g--)try{for(var d=i[g],e=d.cssRules?d.cssRules:d.rules?d.rules:[],c=e.length-1;c>=0;c--)if((e[c].type===window.CSSRule.WEBKIT_KEYFRAMES_RULE||e[c].type===window.CSSRule.MOZ_KEYFRAMES_RULE)&&e[c].name==a)return e[c]}catch(l){}return null};
-    CSSAnimation.trigger=function(a,i,g,d){var e={},c={},l=null,o=0,q=0,j={base:5,easing:"linear",iterationCount:1},k=["Webkit","Moz"],h;for(h in d)j[h]=d[h];if(!a.isPlaying){l=CSSAnimation.find(i);if(!l)return false;e={};for(var b=0;b<l.cssRules.length;b++){d=l.cssRules[b];h=d.keyText;var m=0;h=="from"?m=0:h=="to"?m=1:m=h.replace("%","")/100;e[m*100+"%"]=d}o=(new Date).getTime();var p=m=roundedKey=keyframe=null,s=function(f,u){var n=document.createEvent("Event");n.initEvent("cssAnimationKeyframe",true,
-        true);n.animationName=i;n.keyText=f;n.elapsedTime=u;a.dispatchEvent(n)};b=0;var r=false,t=function(f){r=false;for(b=0;b<k.length&&!r;b++)if(a.style[k[b]+"AnimationName"]!==undefined){a.style[k[b]+"AnimationDuration"]=f.duration;a.style[k[b]+"AnimationTimingFunction"]=f.timingFunction;a.style[k[b]+"AnimationIterationCount"]=f.iterationCount;a.style[k[b]+"AnimationName"]=f.name;r=true}};t({name:i,duration:g+"ms",timingFunction:j.easing,iterationCount:j.iterationCount});a.isPlaying=true;(function f(){p=
-        (new Date).getTime();percent=Math.floor((p-(o+q*g))/g*100);key=percent-percent%j.base+"%";if((keyframe=e[key])&&!c[key]){c[key]=true;s(key,(p-o)/1E3)}if(percent<100)requestAnimFrame(f,a);else{c["100%"]||s("100%",(p-o)/1E3);q++;if(q<j.iterationCount||j.iterationCount=="infinite"){c={};requestAnimFrame(f,a)}else{t({name:null,duration:null,timingFunction:null,iterationCount:0});a.isPlaying=false}}})()}};
-    window.requestAnimFrame=function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(a){window.setTimeout(a,1E3/60)}}();
+	var CSSAnimation = {
+		version: '0.2'
+	};
+
+	// Locate a WebKitCSSKeyframesRule
+	// Modified version of code found @ http://stackoverflow.com/questions/2961544/cssrules-is-empty
+	CSSAnimation.find = function(a) {
+		var ss = document.styleSheets;
+		for (var i = ss.length - 1; i >= 0; i--) {
+			try {
+				var s = ss[i],
+					rs = s.cssRules ? s.cssRules : 
+						 s.rules ? s.rules : 
+						 [];
+
+				for (var j = rs.length - 1; j >= 0; j--) {
+					if ((rs[j].type === window.CSSRule.WEBKIT_KEYFRAMES_RULE || rs[j].type === window.CSSRule.MOZ_KEYFRAMES_RULE) && rs[j].name == a){
+						return rs[j];
+					}
+				}
+			}
+			catch(e) { /* Trying to interrogate a stylesheet from another domain will throw a security error */ }
+		}
+		return null;
+	};
+
+	// Trigger a CSS3 Animation on a given element
+	/**
+	 * Trigger a CSS3 Animation on a given element
+	 * @param {DOMElement} elem The DOM Element to apply the animation to
+	 * @param {String} animationName The name given to the @-webkit-keyframes animation
+	 * @param {Integer}	duration The length of time of the animation (in milliseconds)
+	 * @param {Object} opts An optional set of options used to override the defaults
+	 */
+
+	CSSAnimation.trigger = function(elem, animationName, duration, opts) {
+		var keyframes = {}, loggedKeyframes = {}, animation = null, element = elem, start = 0,  cycle = 0, options = {
+			base: 5,
+			easing: 'linear',
+			iterationCount: 1		
+		},
+		prefixes = ['Webkit', 'Moz'];
+
+		// Enable option setting
+		for(var k in opts)
+			options[k] = opts[k];
+
+		// Prevent animation triggers if the animation is already playing	
+		if(element.isPlaying)		
+			return;
+
+		// Can we find the animaition called animationName?
+		animation = CSSAnimation.find(animationName);
+
+		if(!animation)
+			return false;
+
+		// Work out the timings of keyframes
+		keyframes = {};
+
+		for(var i=0; i < animation.cssRules.length; i++)
+		{
+			var kf = animation.cssRules[i],
+				name = kf.keyText,
+				percentage = 0;
+
+			// Work out the percentage
+			name == 'from' ? percentage = 0 :
+			name == 'to' ? percentage = 1 :
+			percentage = name.replace('%', '') / 100;
+
+			// Store keyframe for easy recall
+			keyframes[(percentage*100)+'%'] = kf;
+		}
+
+		// Start the animation
+		start = new Date().getTime();
+
+		// Variables used by the runloop
+		var current = percentage = roundedKey = keyframe = null,
+			raiseEvent = function(keyText, elapsedTime) {
+				var event = document.createEvent("Event");
+				event.initEvent("cssAnimationKeyframe", true, true);
+				event.animationName = animationName;
+				event.keyText = keyText;
+				event.elapsedTime = elapsedTime;
+				element.dispatchEvent(event);
+			},
+
+		i=0,
+		found=false,
+
+		applyCSSAnimation = function(anim) {
+			found = false;
+			for(i=0; i<prefixes.length && !found; i++)
+			{
+				if(element.style[prefixes[i]+'AnimationName'] !== undefined)
+				{
+					element.style[prefixes[i]+'AnimationDuration'] 			= anim.duration;
+					element.style[prefixes[i]+'AnimationTimingFunction'] 	= anim.timingFunction;
+					element.style[prefixes[i]+'AnimationIterationCount'] 	= anim.iterationCount;	
+					element.style[prefixes[i]+'AnimationName'] 				= anim.name;
+
+					found = true;
+				}
+			}
+		};
+
+		// Trigger the animation
+		applyCSSAnimation({
+			name: 				animationName,
+			duration: 			duration+'ms',
+			timingFunction: 	options.easing,
+			iterationCount: 	options.iterationCount
+		});
+
+		element.isPlaying = true;
+
+
+		// Use a runloop to workout when callbacks should occur
+		(function runloop(){
+			current 	= new Date().getTime(); // Get the current timestamp
+			percent 	= Math.floor(((current - (start + cycle * duration)) / duration) * 100); // Work out the percentage of the way through the animation
+			key 		= (percent - (percent % options.base))+'%'; // Round the percentage
+			keyframe 	= keyframes[key];	// Check if a keyframe exists
+
+
+			if(keyframe && !loggedKeyframes[key])
+			{
+				loggedKeyframes[key] = true;
+				raiseEvent(key, (current-start)/1000);
+			}
+
+			if(percent < 100)	
+				requestAnimFrame(runloop, element);
+			else
+			{
+				if(!loggedKeyframes['100%'])
+					raiseEvent('100%', (current-start)/1000);
+
+				// Trigger the animation again if its repeating
+				cycle++;
+				if(cycle < options.iterationCount || options.iterationCount == 'infinite')
+				{   
+					loggedKeyframes = {};
+					requestAnimFrame(runloop, element);
+				}
+				else
+				{
+					// Reset the styling so it can be triggered again	
+					applyCSSAnimation({
+						name: 				null,
+						duration: 			null,
+						timingFunction: 	null,
+						iterationCount: 	0
+					});
+
+					element.isPlaying = false;		    
+				}
+
+			}
+		})();
+	};;
+
+	// requestAnimationFrame() shim by Paul Irish
+	// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+	window.requestAnimFrame = (function() {
+		return  window.requestAnimationFrame       || 
+				window.webkitRequestAnimationFrame || 
+				window.mozRequestAnimationFrame    || 
+				window.oRequestAnimationFrame      || 
+				window.msRequestAnimationFrame     || 
+				function(/* function */ callback, /* DOMElement */ element){
+					window.setTimeout(callback, 10000 / 60);
+				};
+	})();;
 }
 
 /**
