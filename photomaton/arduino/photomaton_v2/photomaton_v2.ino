@@ -3,13 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-#define WIRE_LED_1  1
-#define WIRE_LED_2  2
-
-#define WIRE_LED_EFFECT 4
-
-#define WIRE_USB    3 
+#define WIRE_DELALL 1
+#define WIRE_RELOAD 2
+#define WIRE_USB    3
 #define WIRE_PHOTO  11
 #define WIRE_EFFECT 12
 #define WIRE_CHANGE 13
@@ -31,7 +27,8 @@
 #define KEY_EFFECT_PLUS KEY_I
 #define KEY_EFFECT_MIN  KEY_U
 #define KEY_EFFECT_USB  KEY_S
-
+#define	KEY_RELOAD	KEY_F5
+#define KEY_DELALL      KEY_J
 
 Bounce buttonPhoto = Bounce(WIRE_PHOTO, 10);
 Bounce buttonEffect = Bounce(WIRE_EFFECT, 10);
@@ -41,6 +38,8 @@ Bounce buttonNext = Bounce(WIRE_NEXT, 10);
 Bounce buttonPrint = Bounce(WIRE_PRINT, 10);
 Bounce buttonDelete = Bounce(WIRE_DEL, 10);
 Bounce buttonUsb = Bounce(WIRE_USB, 10);
+Bounce buttonReload = Bounce(WIRE_RELOAD, 10);
+Bounce buttonDelall = Bounce(WIRE_DELALL, 10);
 
 static int lastPotValue = -1;
 
@@ -49,10 +48,8 @@ Encoder effect(WIRE_POT_1, WIRE_POT_2);
 void setup() {                
   // initialize the digital pin as an output.
   Serial.begin(9600);
-  pinMode(WIRE_LED_1, OUTPUT);
-  pinMode(WIRE_LED_2, OUTPUT);
-
-  pinMode(WIRE_LED_EFFECT, OUTPUT);
+  pinMode(WIRE_DELALL, INPUT_PULLUP);
+  pinMode(WIRE_RELOAD, INPUT_PULLUP);
   pinMode(WIRE_PHOTO, INPUT_PULLUP);
   pinMode(WIRE_EFFECT, INPUT_PULLUP);
   pinMode(WIRE_CHANGE, INPUT_PULLUP);
@@ -66,12 +63,6 @@ void setup() {
 }
 
 void loop() {
-  //On lit le port serie pour voir si quelque chose a changer
-  readSerial();
-  /*
-  //On ecrit sur le port serie pour voir si le potar a changer
-  writeSerial();
-  */
   //On test les différentes touches
   buttonPress(&buttonPhoto, KEY_PHOTO);
   buttonPress(&buttonEffect, KEY_EFFECT);
@@ -81,6 +72,8 @@ void loop() {
   buttonPress(&buttonPrint, KEY_PRINT);
   buttonPress(&buttonDelete, KEY_DEL);
   buttonPress(&buttonUsb, KEY_EFFECT_USB);
+  buttonPress(&buttonReload, KEY_RELOAD);
+  buttonPress(&buttonDelall, KEY_DELALL);
   //On test un changement du curseur
   testChangeEffect();
 }
@@ -102,55 +95,6 @@ void testChangeEffect() {
   }
   effect.write(0);
 }
-
-void readSerial() {
-  if (Serial.available() > 0) {
-        byte x = Serial.read();
-        switch (x) {
-           case '0' : {
-             digitalWrite(WIRE_LED_1, LOW);
-             digitalWrite(WIRE_LED_2, LOW);
-             break;
-           } 
-           case '1' : {
-             digitalWrite(WIRE_LED_1, HIGH);
-             digitalWrite(WIRE_LED_2, LOW);             
-             break;
-           }    
-           case '2' : {
-             digitalWrite(WIRE_LED_1, HIGH);
-             digitalWrite(WIRE_LED_2, HIGH);  
-             break;
-           }
-           case '3' : {
-             digitalWrite(WIRE_LED_1, HIGH);
-             digitalWrite(WIRE_LED_2, HIGH);  
-             break;
-           }
-          case '4' : {
-             digitalWrite(WIRE_LED_EFFECT, HIGH);
-             break;
-          }
-          case '5' : {
-             digitalWrite(WIRE_LED_EFFECT, LOW);
-             break;
-          }    
-      }
-  }
-}
-
-/*
-void writeSerial() {
-  int potValue = analogRead(WIRE_POT);
-  potValue = map(potValue, 0, 1023, 0, 253);
-
-  if ((potValue > (lastPotValue + 2)) || (potValue < (lastPotValue - 2))) {
-    lastPotValue = potValue;
-    Serial.println(potValue);
-  }
-  delay(100);
-}
-*/
 
 void buttonPress(Bounce *b, int key) {
   if (b->update()) {

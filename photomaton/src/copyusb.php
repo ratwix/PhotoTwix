@@ -26,9 +26,8 @@
 	}
 	
 	//On crée les répertoire sur la clé usb
+	mkdir("$usb_drive:\\phototwix", 0, true);
 	mkdir("$usb_drive:\\phototwix\\full", 0, true);
-	
-	mkdir("$usb_drive:\\phototwix\\single", 0, true);
 	
 	//On regarde combien il y a de photos
 	$nb_big = 0;
@@ -40,20 +39,10 @@
 	}
 	closedir($rep);
 	
-	$nb_solo = 0;
-	$rep = opendir($root_photo_blank);
-	while ($file = readdir($rep)) {
-		if (!is_dir($file)) {
-			$nb_solo++;
-		}
-	}
-	closedir($rep);
-	
 	session_start();
 	$_SESSION["copyprogress"] = 0;
 	$_SESSION["copystatus"] = "Copie des photos";
 	$_SESSION["nbBig"] = $nb_big;
-	$_SESSION["nbSolo"] = $nb_solo;
 	$_SESSION["current"] = 0;
 	session_write_close();
 	
@@ -64,7 +53,7 @@
 	while ($file = readdir($rep)) {
 		if (!is_dir($file)) {
 			session_start();
-			$_SESSION["copyprogress"] = $pct / ($nb_solo + $nb_big) * 100;
+			$_SESSION["copyprogress"] = $pct / $nb_big * 100;
 			$_SESSION["current"] = $pct;
 			session_write_close();
 			if (!copy("$root_photo_big\\$file", "$usb_drive:\\phototwix\\full\\$file")) {
@@ -74,25 +63,4 @@
 		}
 	}
 	closedir($rep);
-	
-	session_start();
-	$_SESSION["copystatus"] = "Copie des miniatures";
-	session_write_close();
-	
-	//Les miniatures
-	$rep = opendir($root_photo_blank);
-	while ($file = readdir($rep)) {
-		if (!is_dir($file)) {
-			session_start();
-			$_SESSION["copyprogress"] = $pct / ($nb_solo + $nb_big) * 100;
-			$_SESSION["current"] = $pct;
-			session_write_close();
-			if (!copy("$root_photo_blank\\$file", "$usb_drive:\\phototwix\\single\\$file")) {
-				die("Pas réussi a copier le fichier $file");
-			}
-			$pct++;
-		}
-	}
-	closedir($rep);
-	
 ?>

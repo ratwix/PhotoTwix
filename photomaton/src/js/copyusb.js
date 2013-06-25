@@ -57,11 +57,8 @@ function getCopyProgress() {
 				var arr = JSON.parse(data);
 				
 				$("#copy_progress_value")[0].style.width = arr.copyprogress + '%';
-				$("#copy_progress_value_txt")[0].innerHTML = arr.current + ' / ' + (arr.nbBig + arr.nbSolo) + ' (' + arr.nbBig + ' grande et ' + arr.nbSolo + ' unique)';
+				$("#copy_progress_value_txt")[0].innerHTML = arr.current + ' / ' + arr.nbBig;
 				$("#copy_txt")[0].innerHTML = arr.copystatus;
-				if (g_copy_progress) {
-					getCopyProgress();
-				}
 			}
 	});
 }
