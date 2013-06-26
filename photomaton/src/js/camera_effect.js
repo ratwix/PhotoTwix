@@ -17,19 +17,20 @@
 	function init_effect_filter() {
 		//Les effets glfx
 		effect_filter.push(null_effect);
+		effect_filter.push(grayscale_effect);
+		effect_filter.push(sepia_effect);
 		effect_filter.push(swirl_effect);
+		effect_filter.push(vintage_effect);			
+		effect_filter.push(gotham_effect);
+		effect_filter.push(nashville_effect);
+		effect_filter.push(california_gold_effect);
 		//effect_filter.push(fisheyes_effect);
 		effect_filter.push(pinch_effect);
 		//effect_filter.push(bulb_pinch_effect);		
 		//effect_filter.push(square_effect);
-		effect_filter.push(grayscale_effect);
-		effect_filter.push(gotham_effect);
-		effect_filter.push(sepia_effect);
+		
 		//effect_filter.push(saturation_effect);
 		effect_filter.push(color_effect);
-		effect_filter.push(vintage_effect);			
-		effect_filter.push(nashville_effect);
-		effect_filter.push(california_gold_effect);
 		//effect_filter.push(country_effect);
 		//effect_filter.push(desert_effect);
 		effect_filter.push(lord_kevin_effect);

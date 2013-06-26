@@ -148,7 +148,7 @@
 #validate_print div,
 #validate_delete div {
     font-size: 70px;
-    color: #ffffff;
+    color: black;
     position:absolute;
     top:100px;
     left:15px;
@@ -248,12 +248,13 @@
   color: #888;
 }
 
+#delall_txt,
 #copy_txt {
 	width: 100%;
 	text-align: center;
 	top: 100px;
 	font: 400 50px/1 'Kaushan Script', cursive;
-	color: white;
+	color: black;
 	position: absolute;
 }
 
@@ -268,6 +269,15 @@
 	text-align: center;
 	top: 320px;
 	font: 400 50px/1 'Kaushan Script', cursive;
-	color: white;
+	color: black;
+	position: absolute;
+}
+
+#curent_photo_txt {
+	width: 100%;
+	text-align: center;
+	bottom: 100px;
+	font: 400 50px/1 'Kaushan Script', cursive;
+	color: black;
 	position: absolute;
 }

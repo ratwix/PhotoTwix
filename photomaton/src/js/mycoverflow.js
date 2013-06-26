@@ -24,8 +24,9 @@ function handleRequestAllPhoto(data) {
  function initCoverFlow() {
 	Galleria.loadTheme('./lib/themes/classic/galleria.classic.js');
 	Galleria.configure({
-		carouselSpeed: 100,
-		transition: 'slide'
+		carouselSpeed: 200,
+		transition: 'slide',
+		thumbnails: false
 	});
     Galleria.run('#photo_galerie');
 }

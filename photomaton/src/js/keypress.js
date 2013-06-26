@@ -9,7 +9,8 @@ KEY_DEL		= "d".charCodeAt(0);
 KEY_TEST	= "t".charCodeAt(0); 
 KEY_AD_EFF	= "u".charCodeAt(0);
 KEY_MN_EFF	= "i".charCodeAt(0); 
-KEY_USB		= "s".charCodeAt(0);  
+KEY_USB		= "s".charCodeAt(0);
+KEY_DELALL	= "j".charCodeAt(0);    
  
  function showCamera() {
 	$("#camera")[0].style.display = 'block';	//On affiche la camera
@@ -26,10 +27,18 @@ KEY_USB		= "s".charCodeAt(0);
 				
  }
  
-  function showCopy() {
+ function showCopy() {
 	$("#copy_usb")[0].style.display = 'block';
-	
-	
+ }
+ 
+ function showDelall() {
+	$("#delall")[0].style.display = 'block';
+ }
+ 
+ function reset() {
+	hideAll(); 									//On cache tout les éléments
+	showCamera();
+	null_effect();
  }
  
  function detectkey(event) {
@@ -52,6 +61,7 @@ KEY_USB		= "s".charCodeAt(0);
 		if (keyCode == KEY_PREV) {
 			if (flowActive()) {
 				Galleria.get(0).prev();
+				$("#curent_photo_txt")[0].innerHTML = (Galleria.get(0).getIndex() + 1) + " / " + Galleria.get(0).getDataLength();
 			} else {
 				showFlow();
 			}
@@ -61,6 +71,7 @@ KEY_USB		= "s".charCodeAt(0);
 		if (keyCode == KEY_NEXT) {
 			if (flowActive()) {
 				Galleria.get(0).next();
+				$("#curent_photo_txt")[0].innerHTML = (Galleria.get(0).getIndex() + 1) + " / " + Galleria.get(0).getDataLength();
 			} else {
 				showFlow();
 			}
@@ -129,5 +140,21 @@ KEY_USB		= "s".charCodeAt(0);
 			}
 		}
 
+	}
+	
+		//Change l'effet
+	if (keyCode == KEY_DELALL) {
+		if ($("#delall")[0].style.display == 'none') {
+			$("#delall_txt")[0].innerHTML = "Tout supprimer ? Inserez une cle USB pour la sauvegarde et appuyez a nouveau sur le bouton";
+			hideAll();
+			showDelall();
+		} else {
+			$("#delall_txt")[0].innerHTML = "Reset en cours";
+			$.ajax({
+				url: 'copydelete.php',
+				success: reset,
+				fail: reset
+			});
+		}
 	}
  }
