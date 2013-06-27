@@ -10,7 +10,7 @@ function showCopy() {
 }
 
 function showCopyStart() {
-	$("#copy_txt")[0].innerHTML = "Copie en cour";
+	$("#copy_txt")[0].innerHTML = "Copie en cours";
 	$("#copy_usb")[0].style.display = 'block';
 	
 	$("#copy_progress_value")[0].style.width = "0%";

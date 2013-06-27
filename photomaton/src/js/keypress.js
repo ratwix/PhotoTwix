@@ -61,6 +61,7 @@ KEY_DELALL	= "j".charCodeAt(0);
 		if (keyCode == KEY_PREV) {
 			if (flowActive()) {
 				Galleria.get(0).prev();
+				$("#curent_photo_txt")[0].innerHTML = (Galleria.get(0).getIndex() + 1) + " / " + Galleria.get(0).getDataLength();
 			} else {
 				showFlow();
 			}
@@ -70,6 +71,7 @@ KEY_DELALL	= "j".charCodeAt(0);
 		if (keyCode == KEY_NEXT) {
 			if (flowActive()) {
 				Galleria.get(0).next();
+				$("#curent_photo_txt")[0].innerHTML = (Galleria.get(0).getIndex() + 1) + " / " + Galleria.get(0).getDataLength();
 			} else {
 				showFlow();
 			}

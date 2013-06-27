@@ -26,9 +26,11 @@
 	}
 	
 	//On crée les répertoire sur la clé usb
-	mkdir("$usb_drive:\\phototwix", 0, true);
-	mkdir("$usb_drive:\\phototwix\\full", 0, true);
+	//mkdir("$usb_drive:\\phototwix", 0777, true);
+	mkdir("$usb_drive:\\phototwix\\full", 0777, true);
 	
+	sleep(4);
+	set_time_limit(3000);
 	//On regarde combien il y a de photos
 	$nb_big = 0;
 	$rep = opendir($root_photo_big);

@@ -272,3 +272,12 @@
 	color: black;
 	position: absolute;
 }
+
+#curent_photo_txt {
+	width: 100%;
+	text-align: center;
+	bottom: 100px;
+	font: 400 50px/1 'Kaushan Script', cursive;
+	color: black;
+	position: absolute;
+}
