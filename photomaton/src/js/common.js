@@ -5,7 +5,7 @@
  
  var g_camHeight = 480;
  var g_camWidth = 720;
- var g_camRation = 1.5;
+ var g_camRation = 1.5	;
  var g_camRationDirection = 'h'; //h si le ration est applique horizontalement; v si il est appliqué verticalement
  
  var g_countdown_delay = 4;

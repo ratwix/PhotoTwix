@@ -165,7 +165,9 @@
 	
 	function change_filter() {
 		var effect = effect_filter[effect_id++ % effect_filter.length];
-		effect();
+		if (effect != null) {
+			effect();
+		}
 	}
 	
 	/**
@@ -198,8 +200,10 @@
 	function null_effect() {
 		function effect(c) {
 			var video = $("#camera_direct")[0];
-			current_texture.loadContentsOf(video);
-			c.draw(current_texture).update();
+			if (current_texture != null) {
+				current_texture.loadContentsOf(video);
+				c.draw(current_texture).update();
+			}
 		}
 		
 		arduinoWrite("ledFx_off");
@@ -775,23 +779,34 @@
 		interval_id = setInterval(function() {
 			if (cam.style.display == 'block') { //on ne met a jour l'affichage que si on doit l'afficher
 				if ("" != canvas) {
-					effect(canvas);
+					if (canvas != null) {
+						effect(canvas);
+					}
 				}
 		
 				if ("" != canvas2) {
-					current_texture2.loadContentsOf(canvas);
-					canvas2.draw(current_texture2).update();
-					//effect(canvas2);
+					if (current_texture2 != null) {
+						current_texture2.loadContentsOf(canvas);
+						if (canvas2 != null) {
+							canvas2.draw(current_texture2).update();
+						}
+					}
 				}
 				if ("" != canvas3) {
-					//effect(canvas3);
-					current_texture3.loadContentsOf(canvas);
-					canvas3.draw(current_texture3).update();
+					if (current_texture3 != null) {
+						current_texture3.loadContentsOf(canvas);
+						if (canvas3 != null) {
+							canvas3.draw(current_texture3).update();
+						}
+					}
 				}
 				if ("" != canvas4) {
-					//effect(canvas4);
-					current_texture4.loadContentsOf(canvas);
-					canvas4.draw(current_texture4).update();
+					if (current_texture4 != null) {
+						current_texture4.loadContentsOf(canvas);
+						if (canvas4 != null) {
+							canvas4.draw(current_texture4).update();
+						}
+					}
 				}
 			}
 		}, refresh_rate);

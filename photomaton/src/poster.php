@@ -5,8 +5,8 @@
 	
 	$photo_height = 350;
 	$marge = 10;
-	$ratio = 1 / 1.618;
-	$nb_col = 23;
+	$ratio = 2/3;
+	$nb_col = 16;
 	$photo_list = array();
 	
 	set_time_limit(3000);
@@ -70,6 +70,7 @@
 		}
 		//On amméliore le contraste
 		$cmd = "$convert_path $full_path_blank\\".$photo_list[$i]["name"]."\" -normalize -contrast-stretch  0% -colorspace Gray $full_path_blank\\res_".$photo_list[$i]["name"]."\"";
+		//echo "<BR>$cmd</BR>";
 		system($cmd, $rt);
 		$img = ImageCreateFromPng($root_photo_blank."/res_".$photo_list[$i]["name"]);
 		

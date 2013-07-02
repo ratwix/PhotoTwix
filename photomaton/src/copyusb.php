@@ -26,7 +26,7 @@
 	}
 	
 	//On crée les répertoire sur la clé usb
-	//mkdir("$usb_drive:\\phototwix", 0777, true);
+	mkdir("$usb_drive:\\phototwix", 0777, true);
 	mkdir("$usb_drive:\\phototwix\\full", 0777, true);
 	
 	sleep(4);

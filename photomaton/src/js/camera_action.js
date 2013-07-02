@@ -28,19 +28,7 @@ function take_photo() {
 			//Effet de flash
 			g_photo_sound.play();
 			$("#camera_flash").show().delay(250).fadeOut(250);
-			
-//On affiche un countdown entre 2 photos
-/*
-			$('#piecounter').pieChartCountDown({
-              time : g_photo_interval / 1000,
-              color : '#C9C1C4',
-              background: '#5E5E5E',
-              size : 150,
-              border: 8,
-              infinite : false,
-			});
-			*/
-			
+						
 			$('#piecounter').pietimer({
 				seconds: g_photo_interval / 1000,
 				color: '#5E5E5E',
