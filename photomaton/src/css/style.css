@@ -135,12 +135,13 @@
 
 .photo_preview {
 	position:absolute;
-	width:600px;
-	/*height:800px;*/
+	/*width:800px;*/
+	height:700px;
 	top:50%;
 	left:50%;
-	margin-left:-300px;
-	margin-top:-400px;
+	margin-left:-350px;
+	text-align:center;
+	margin-top:-300px;
 	-webkit-transform : rotate(-12deg);
 	-webkit-box-shadow: 12px 12px 1px 1px rgba(0,0,0,0.6);
 }

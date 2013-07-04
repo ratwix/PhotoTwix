@@ -6,7 +6,7 @@
 	$photo_height = 350;
 	$marge = 10;
 	$ratio = 2/3;
-	$nb_col = 16;
+	$nb_col = 19;
 	$photo_list = array();
 	
 	set_time_limit(3000);
@@ -70,11 +70,13 @@
 		}
 		//On amméliore le contraste
 		$cmd = "$convert_path $full_path_blank\\".$photo_list[$i]["name"]."\" -normalize -contrast-stretch  0% -colorspace Gray $full_path_blank\\res_".$photo_list[$i]["name"]."\"";
+		//En couleur
+		//$cmd = "$convert_path $full_path_blank\\".$photo_list[$i]["name"]."\" -normalize -contrast-stretch  0% $full_path_blank\\res_".$photo_list[$i]["name"]."\"";
 		//echo "<BR>$cmd</BR>";
 		system($cmd, $rt);
 		$img = ImageCreateFromPng($root_photo_blank."/res_".$photo_list[$i]["name"]);
 		
-		imagecopymergegray($img, $img, 0, 0, 0, 0, imagesx($img), imagesy( $img ), 0);
+		imagecopymerge($img, $img, 0, 0, 0, 0, imagesx($img), imagesy( $img ), 0);
 		$width = floor(imagesx($img) / imagesy($img) * $photo_height);
 		unlink($root_photo_blank."/res_".$photo_list[$i]["name"]);
 		if ($cur_x + $width + $marge > $result_width) {
