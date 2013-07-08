@@ -129,19 +129,7 @@ function requestMergePhoto() {
 /** Merge callback */
 function handleMergePhoto(data) {
 	//On met a jour la photo
-	var dom = stringToDom(data);
-	
-	$("#photo_preview_full")[0].src = dom.getAttribute("href");
-	
-	//Ajouter l'ajout a la galerie
-	var data = [{
-		image: dom.getAttribute("href"),
-		thumb: dom.firstChild.getAttribute("src")
-	}];
-	
-	Galleria.get(0).push(data);
+	showFlow();
+	thumb_add($(data));
 	g_photo_in_action = false; //On a fini de prendre une photo
-
-	$("#preview")[0].style.display='block';
-	
 } 

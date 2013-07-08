@@ -60,8 +60,7 @@ KEY_DELALL	= "j".charCodeAt(0);
 		//Photo precedente
 		if (keyCode == KEY_PREV) {
 			if (flowActive()) {
-				Galleria.get(0).prev();
-				$("#curent_photo_txt")[0].innerHTML = (Galleria.get(0).getIndex() + 1) + " / " + Galleria.get(0).getDataLength();
+				thumb_prev();
 			} else {
 				showFlow();
 			}
@@ -70,8 +69,7 @@ KEY_DELALL	= "j".charCodeAt(0);
 		//Photo suivante
 		if (keyCode == KEY_NEXT) {
 			if (flowActive()) {
-				Galleria.get(0).next();
-				$("#curent_photo_txt")[0].innerHTML = (Galleria.get(0).getIndex() + 1) + " / " + Galleria.get(0).getDataLength();
+				thumb_next();
 			} else {
 				showFlow();
 			}
@@ -79,23 +77,15 @@ KEY_DELALL	= "j".charCodeAt(0);
 		
 		//Impression
 		if (keyCode == KEY_PRINT) {
-			if ($("#validate_print")[0].style.display == 'block') {
-				printCurrent();
-			} else {
-				if (flowActive() || ($("#preview")[0].style.display == 'block')) {
-					validatePrintCurrent();
-				}
+			if (flowActive()) {
+				thumb_print();
 			}
 		}
 		
 		//Suppression
 		if (keyCode == KEY_DEL) {
-			if ($("#validate_delete")[0].style.display == 'block') {
-				deleteCurrent();
-			} else {
-				if (flowActive() || ($("#preview")[0].style.display == 'block')) {
-					validateDeleteCurrent();
-				}
+			if (flowActive()) {
+				thumb_delete();
 			}
 		}
 	
@@ -124,7 +114,12 @@ KEY_DELALL	= "j".charCodeAt(0);
 	
 	//Change l'effet
 	if (keyCode == KEY_EFFECT) {
-		change_filter();
+		if (flowActive()) { //If photo preview is active, zoom photo
+			thumb_zoom();
+		} else {
+			change_filter(); //change photo filter
+		}
+		
 	}
 	
 	//Change l'effet

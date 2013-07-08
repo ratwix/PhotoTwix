@@ -145,5 +145,15 @@
 	
 	imagepng($thumb, $root_photo_thumb."/".$d.'.png');
 	
-	echo "<a href='$root_photo_big/$d.png'><img src='$root_photo_thumb/$d.png'/></a>\n";
+	$or = 'thumb_v';
+	if ($sourceWidth > $sourceHeight) {
+		$or = 'thumb_h';
+	}
+	
+	echo "<div class='thumb'>
+				<img src='$root_photo_big/$d.png' short_src='$root_photo_big/$d.png'  class='thumb_b $or'>
+				<img src='$root_photo_thumb/$d.png' short_src='$root_photo_thumb/$d.png' class='thumb_s $or'/></a>
+	  	  </div>\n";
+	
+	//echo "<a href='$root_photo_big/$d.png'><img src='$root_photo_thumb/$d.png'/></a>\n";
 ?>
