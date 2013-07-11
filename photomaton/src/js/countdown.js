@@ -21,7 +21,9 @@ function startCountdown() {
 		function(){
 			current_delay--;
 			countdown.innerHTML = current_delay;
-			g_count_sound.play();
+			if (current_delay != 0) {
+				g_count_sound.play();
+			}
 			$("#photo_countdown").show().delay(200).fadeOut(550);
 			//photo_countdown.setValue(current_delay, 600);
 

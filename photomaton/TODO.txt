@@ -3,7 +3,7 @@ X Create custom gallerie
 - Change key usage : use rotary to navigate throw photos
 - Add video recording
 X Change preview position : change view to height
-- Poster creation : auto select nb column
+- Poster creation : detect face and make a square for an automated poster
 X Countdown : fix countdown (multi timer)
 - Auto adjust image brightness & saturation when merging
 

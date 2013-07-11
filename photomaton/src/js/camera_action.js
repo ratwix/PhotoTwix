@@ -36,9 +36,9 @@ function take_photo_and_count(current_photo) {
 	if ((current_photo) < g_nb_take_photo) {
 		$('#piecounter').pietimer({
 			seconds: g_photo_interval / 1000,
-			color: '#5E5E5E',
-			height: 150,
-			width: 150
+			color: '#567EBB',
+			height: 200,
+			width: 200
 		}, function () { //recursive call up to current_photo
 				take_photo_and_count(current_photo + 1);
 		});
@@ -104,7 +104,8 @@ function requestMergePhoto() {
 	var thumb = $(".photo_thumb");
 	var thumb_blank = $(".photo_thumb_blank");
 	
-	hideAll(); 
+	hideAll();
+	showLoading();	
 	
 	for (var i = 0; i < thumb.length; i++) {
 		photoArray[i] = thumb[i].src;

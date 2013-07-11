@@ -14,7 +14,7 @@
 	$usb_drive = null;
 	
 	//On regarde si une clé USB est inséré, de d jusqu'a z
-	for ($i = 'd'; $i < 'z'; $i++) {
+	for ($i = 'g'; $i < 'z'; $i++) {
 		if (file_exists("$i:\\")) {
 			$usb_drive = $i;
 			break;

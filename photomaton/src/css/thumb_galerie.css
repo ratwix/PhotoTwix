@@ -68,7 +68,6 @@
 /**** Photo demo ****/
 
 #container {
-  border: 1px solid #666;
   padding: 5px;
   margin-bottom: 20px;
   position: absolute;
@@ -101,8 +100,7 @@
 }
 
 .thumbs .thumb.thumb_current img {
-    -webkit-box-shadow: 0 0 25px 10px rgba(240, 231, 35,0.8);
-    /*-webkit-animation: pulse 1.5s infinite ease-in-out; /* Ici on utilise l'animation référencée plus haut */*/
+    -webkit-box-shadow: 0 0 25px 10px #567EBB;
 }
 
 .thumbs .thumb .thumb_b{
@@ -142,8 +140,8 @@
 }
 
 .delete_watermark img {
-	filter:alpha(opacity=25);
-	opacity:.25;
+	filter:alpha(opacity=50);
+	opacity:.50;
 }
 
 .print_watermark {
@@ -151,6 +149,6 @@
 }
 
 .print_watermark img {
-	filter:alpha(opacity=25);
-	opacity:.25;
+	filter:alpha(opacity=50);
+	opacity:.50;
 }

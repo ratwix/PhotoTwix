@@ -8,6 +8,7 @@ $canAction = true;
  /** Récupère l'ensemble des photos prise lors de l'initialisation */
 
 function requestAllPhoto() {
+	showLoading();
 	$.ajax({
 		type: "POST",
 		url:"getAllPhotos.php",
@@ -16,23 +17,8 @@ function requestAllPhoto() {
 	});
 }
 
-function flowActive() {
-	//if ($("#coverflow")[0].style.display == 'block') {
-	if ($("#coverflow")[0].getAttribute('class') == 'coverflow_show') {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-// On veut voir toute les photos
-function showFlow() {
-	hideAll();
-	//$("#coverflow")[0].style.display='block';
-	$("#coverflow")[0].setAttribute('class', 'coverflow_show');
-}
-
 function handleRequestAllPhoto(data) {
+	hideLoading();
 	$("#container").html(data);
 	$('#container').imagesLoaded( function(){
 		$('#container').isotope({
@@ -45,6 +31,22 @@ function handleRequestAllPhoto(data) {
 		$('#container').attr('thumb_basic_x', $top);
 	  });
 }
+
+function flowActive() {
+	if ($("#coverflow")[0].getAttribute('class') == 'coverflow_show') {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+// On veut voir toute les photos
+function showFlow() {
+	hideAll();
+	$("#coverflow")[0].setAttribute('class', 'coverflow_show');
+}
+
+
 	
   //Select next thumb with class thumb_current
   function thumb_next() {
@@ -134,9 +136,7 @@ function handleRequestAllPhoto(data) {
 	$elem = $('#container').find('.thumb_current');
 	
 	if (thumb_prev() == false) {
-		if (thumb_next() == false) {
-			//On est dans le premier cas : il n'y a pas de thumb_current : a gérer ? Pour le moment non
-		}
+		thumb_next();
 	}
 	
 	$('#container').isotope( 'remove', $elem, action);
@@ -151,7 +151,7 @@ function handleRequestAllPhoto(data) {
 		remove_watermark();
 		var path =  $('.thumb_current .thumb_b').attr('short_src'); 
 		
-		$.ajax({ //TODO
+		$.ajax({
 			type: "POST",
 			url:"print.php",
 			data: {path:path},

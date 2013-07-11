@@ -65,12 +65,19 @@ function initCamera() {
 //Cache tout les panel du projet
 function hideAll() {
 	$("#camera")[0].style.display='none';
-	$("#preview")[0].style.display='none';
-	$("#validate_delete")[0].style.display='none';
-	$("#validate_print")[0].style.display='none';
 	$("#copy_usb")[0].style.display='none';
 	$("#delall")[0].style.display='none';
+	$("#loading")[0].style.display='none';
 	$("#coverflow")[0].setAttribute('class', 'coverflow_hide');
+}
+
+//Show the loading point
+function showLoading() {
+	$("#loading")[0].style.display='block';	
+}
+
+function hideLoading() {
+	$("#loading")[0].style.display='none';	
 }
 
 function stringToDom(s) {

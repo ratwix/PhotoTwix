@@ -5,7 +5,8 @@
     left:0;
 	width: 100%;
 	height: 100%;
-	background-image:url(../img/back-photo3.jpg);
+	background-image:url(../img/back-black2.jpg);
+	background-size: 100% auto;
 	cursor:none;
 	overflow-y: hidden; 
 	overflow: hidden;
@@ -106,19 +107,9 @@
 
 	font-family: Comic Sans, Comic Sans MS, cursive;
 	font-size: 250px;
-	color: white;
-	text-shadow: 5px 5px 0px #000;
-	/*
-	background-color: white;
-	display: block;
-	border: 5px solid #dddddd;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-moz-box-shadow: 5px 5px 10px #000000;
-	-webkit-box-shadow: 5px 5px 10px #000000;
-	-khtml-box-shadow: 5px 5px 10px #000000;
-	box-shadow: 5px 5px 10px #000000;
-	*/
+	color: #DCE0E6;
+	text-shadow: 5px 5px 20px #1F1F20;
+
 }
 
 #camera_flash{
@@ -128,7 +119,7 @@
 	top:0;
 	width:100%;
 	height:100%;
-	background-color:#fff
+	background-color:#FFF;
 }
 
 
@@ -194,10 +185,6 @@
 	display:block;
 
 	height: 140px;
-	/*
-	padding: 10px 10px 10px 10px;
-	background: white;
-	*/
 	-webkit-box-shadow: 8px 8px 1px 1px rgba(0,0,0,0.5);
 	
 	
@@ -208,7 +195,6 @@
 	display: inline;
 	float: left;
 	position: relative;
-	/*top: -35px;*/
 	margin-left: 1px;
 	margin-right: 1px;
 	
@@ -235,8 +221,8 @@
 }
  
 .polaroid #camera_view {
-  border: 10px solid #fff;
-  border-bottom: 45px solid #fff;
+  border: 10px solid #DCE0E6;
+  border-bottom: 45px solid #DCE0E6;
   box-shadow: 12px 12px 12px 3px rgba(0,0,0,0.5);
 }
  
@@ -246,7 +232,7 @@
   width: 100%;
   bottom: 10px;
   font: 400 30px/1 'Kaushan Script', cursive;
-  color: #888;
+  color: #1F1F20;
 }
 
 #delall_txt,
@@ -255,7 +241,7 @@
 	text-align: center;
 	top: 100px;
 	font: 400 50px/1 'Kaushan Script', cursive;
-	color: black;
+	color: #DCE0E6;
 	position: absolute;
 }
 

@@ -13,6 +13,7 @@
     <link href="./css/style.css" rel="stylesheet"/>
 	<link href="./css/progress-bar.css" rel="stylesheet"/>
 	<link href="./css/thumb_galerie.css" rel="stylesheet"/>
+	<link href="./css/load.css" rel="stylesheet"/>
 	
   </head>
 
@@ -67,20 +68,6 @@
 			<div id="photo_result_blank" style="display:none"></div> <!-- Les photos sans les effets pour sauvegarde -->
 			<div id="camera_flash"></div> <!-- Le flash -->
 		</div>
-
-		<div id="preview" style="display:none">
-			<img id="photo_preview_full" class="photo_preview"></img>
-		</div>
-
-		<div id="validate_delete" style="display:none">
-			<div>Supprimer ?</div>
-			<img id="photo_preview_delete" class="photo_preview"></img>
-		</div>
-		
-		<div id="validate_print" style="display:none">
-			<div>Imprimer ?</div>
-			<img id="photo_preview_print" class="photo_preview"></img>
-		</div>
 		
 		<div id="copy_usb" style="display:none">
 			<span id="copy_txt">Copie en cour</span>	
@@ -97,13 +84,12 @@
 		<div id="coverflow" class='coverflow_show'>
 			<div id="container" class="clickable clearfix thumbs">
 			</div>
-			
-			<!--
-			<div id="photo_galerie">
-			</div>
-			<div id="curent_photo_txt">
-			</div>
-			-->
+		</div>
+		
+		<div id="loading" class="bubblingG" style="display:none">
+			<span id="bubblingG_1"></span>
+			<span id="bubblingG_2"></span>
+			<span id="bubblingG_3"></span>
 		</div>
 	</div>
     <!-- Le javascript
@@ -111,23 +97,14 @@
     <!-- Placed at the end of the document so the pages load faster -->
 		<script language="JavaScript" type="text/javascript" src="./lib/jquery-1.8.2.min.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./lib/glfx.js"></script>
-		<!--
-		<script language="JavaScript" type="text/javascript" src="./lib/counter_mini.js"></script>
-		<script language="JavaScript" type="text/javascript" src="./lib/galleria-1.3b.js"></script>
-		-->
 		<script language="JavaScript" type="text/javascript" src="./lib/jquery.piechartcountdown.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./lib/jquery.pietimer.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./lib/jquery.isotope.js"></script>
-<!--		
-		<script language="JavaScript" type="text/javascript" src="./js/mycoverflow.js"></script>
-		<script language="JavaScript" type="text/javascript" src="./js/printdelete.js"></script>
-		-->
 		<script language="JavaScript" type="text/javascript" src="./js/common.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./js/camera_effect.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./js/camera_action.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./js/countdown.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./js/keypress.js"></script>
-
 		<script language="JavaScript" type="text/javascript" src="./js/arduino.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./js/gallery.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./js/copyusb.js" charset="utf-8"></script>

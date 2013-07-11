@@ -6,6 +6,6 @@
 					'nbBig' => $_SESSION["nbBig"],
 					'nbSolo' => $_SESSION["nbSolo"],
 					'current' => $_SESSION["current"]);
-					
+	session_write_close();				
 	echo json_encode($arr);
 ?>
