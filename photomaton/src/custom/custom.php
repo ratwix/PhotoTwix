@@ -1,5 +1,5 @@
 <?php
-	$g_customize	= true; //True --> apply customization
+	$g_customize	= false; //True --> apply customization
 	$g_add_width_h 	= 37 * 2; //Add nb pixel to horizontal photo width 
 	$g_add_height_h	= 25 * 2; //Add nb pixel to horizontal photo height 
 	$g_add_x_h		= 37; //Add x pixel to horizontal photo start (remove borders)
