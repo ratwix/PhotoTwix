@@ -36,17 +36,6 @@
 	left:-150px;
 }
 
-.camera_2 {
-	width:100%; 
-	height:213px;
-}
-
-.video_2 {
-	position: relative;
-	width: 100%;
-	top:-133px;
-}
-
 .camera_1 {
 	width:100%; 
 	height:682px;
@@ -66,8 +55,6 @@
 	height: 100%;
 	overflow:hidden;
 }
-
-
 
 .camera_container_result{
 	width:100%; 
@@ -122,48 +109,6 @@
 	background-color:#FFF;
 }
 
-
-
-.photo_preview {
-	position:absolute;
-	/*width:800px;*/
-	height:700px;
-	top:50%;
-	left:50%;
-	margin-left:-350px;
-	text-align:center;
-	margin-top:-300px;
-	-webkit-transform : rotate(-12deg);
-	-webkit-box-shadow: 12px 12px 1px 1px rgba(0,0,0,0.6);
-}
-
-#validate_print div,
-#validate_delete div {
-    font-size: 70px;
-    color: black;
-    position:absolute;
-    top:100px;
-    left:15px;
-}
-
-
-#coverpreview {
-	position:absolute;
-	right:70px;
-	width:600px;
-	/*height:800px;*/
-	top:50%;
-	margin-top:-400px;
-	-webkit-transform : rotate(-3deg);
-	-webkit-box-shadow: 12px 12px 1px 1px rgba(0,0,0,0.6);
-}
-
-#photo_result {
-	position:absolute;
-	top:60px;
-	left:60px;
-}
-
 .coverflow_show {
 	
 }
@@ -187,37 +132,7 @@
 	height: 140px;
 	-webkit-box-shadow: 8px 8px 1px 1px rgba(0,0,0,0.5);
 	
-	
 	margin-bottom: 20px;
-}
-
-.counter_character {
-	display: inline;
-	float: left;
-	position: relative;
-	margin-left: 1px;
-	margin-right: 1px;
-	
-}
-
-.counter_character_left {
-	margin-left: 0px;
-	margin-right: 1px;
-}
-
-.counter_character_inner {
-	margin-left: 1px;
-	margin-right: 1px;
-}
-
-.counter_character_right {
-	margin-left: 1px;
-	margin-right: 0px;
-}
-
-.counter_marker {
-	position: relative;
-	z-index: 10;
 }
  
 .polaroid #camera_view {
@@ -260,11 +175,17 @@
 	position: absolute;
 }
 
-#curent_photo_txt {
-	width: 100%;
-	text-align: center;
-	bottom: 100px;
+.common_text{
 	font: 400 50px/1 'Kaushan Script', cursive;
-	color: black;
-	position: absolute;
+	color: #DCE0E6;
+}
+
+.menu_item  span{
+	font: 400 50px/1 'Kaushan Script', cursive;
+	color: #DCE0E6;
+}
+
+.menu_item_selected  span{
+	font: 400 50px/1 'Kaushan Script', cursive;
+	color: red;
 }

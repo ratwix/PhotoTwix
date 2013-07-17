@@ -1,5 +1,6 @@
  <?php
-	ob_implicit_flush();
+/*
+ ob_implicit_flush();
 	
 	 workaround();
 	
@@ -53,5 +54,5 @@
 			sleep(1);
 		}
 	}
-	
+	*/
  ?>

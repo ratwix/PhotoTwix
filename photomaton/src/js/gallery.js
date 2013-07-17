@@ -27,8 +27,10 @@ function handleRequestAllPhoto(data) {
 			columnWidth : 80
 		  },
 		});
-		$top = $('.thumb_current').offset().top;
-		$('#container').attr('thumb_basic_x', $top);
+		if ($('.thumb_current').length > 0) {
+			$top = $('.thumb_current').offset().top;
+			$('#container').attr('thumb_basic_x', $top);
+		}
 	  });
 }
 

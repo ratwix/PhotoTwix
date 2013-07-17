@@ -206,8 +206,6 @@
 			}
 		}
 		
-		arduinoWrite("ledFx_off");
-		
 		applyEffect(effect);
 		effect_id = 1; //pour la reinitialisation
 		$("#effect_info").html("Normal");
@@ -220,8 +218,6 @@
 			current_texture.loadContentsOf(video);
 			c.draw(current_texture).hueSaturation(-1, -1).update();
 		}
-		
-		arduinoWrite("ledFx_off");
 		
 		applyEffect(effect);
 		
@@ -236,8 +232,6 @@
 			var effect_value = getEffectValue(-1, 1);
 			c.draw(current_texture).hueSaturation(0, effect_value).update();
 		}
-		
-		arduinoWrite("ledFx_on");
 		
 		applyEffect(effect);
 		
@@ -254,8 +248,6 @@
 			var effect_value = getEffectValue(-1, 1);
 			c.draw(current_texture).hueSaturation(effect_value, 0).update();
 		}
-		
-		arduinoWrite("ledFx_on");
 		
 		g_effect_value = g_max_effet / 3; //on met l'effet au max
 		
@@ -274,8 +266,6 @@
 			c.draw(current_texture).sepia(effect_value).update();
 		}
 		
-		arduinoWrite("ledFx_on");
-		
 		g_effect_value = g_max_effet;
 		
 		applyEffect(effect);
@@ -290,7 +280,7 @@
 			current_texture.loadContentsOf(video);
 			c.draw(current_texture).hueSaturation(1, 0).update();
 		}
-		arduinoWrite("ledFx_off");
+
 		applyEffect(effect);
 		
 		$("#effect_info").html("Inversé");
@@ -302,8 +292,6 @@
 			current_texture.loadContentsOf(video);
 			c.draw(current_texture).denoise(24).update();
 		}
-
-		arduinoWrite("ledFx_off");
 		
 		applyEffect(effect);
 		
@@ -325,8 +313,6 @@
 		
 		g_effect_value = g_max_effet / 3;
 		
-		arduinoWrite("ledFx_on");
-		
 		$("#effect_info").html("Torsion");
 	}
 	
@@ -340,8 +326,6 @@
 		}
 
 		applyEffect(effect);
-		
-		arduinoWrite("ledFx_on");
 		
 		$("#effect_info").html("Bulle");
 	}
@@ -358,7 +342,7 @@
 
 		applyEffect(effect);
 		g_effect_value = g_max_effet / 4 * 3;
-		arduinoWrite("ledFx_on");
+		
 		
 		$("#effect_info").html("Bulle");
 	}
@@ -376,8 +360,6 @@
 		applyEffect(effect);
 		
 		g_effect_value = g_max_effet / 4;
-		
-		arduinoWrite("ledFx_on");
 		
 		$("#effect_info").html("Pincement");
 	}
@@ -398,7 +380,7 @@
 		
 		g_effect_value = -(g_max_effet / 4);
 		
-		arduinoWrite("ledFx_off");
+
 		
 		$("#effect_info").html("Informaticien");
 	}
@@ -418,8 +400,6 @@
 		
 		applyEffect(effect);
 		
-		arduinoWrite("ledFx_off");
-		
 		$("#effect_info").html("Carree");
 	}
 	
@@ -433,8 +413,6 @@
 
 		applyEffect(effect);
 		
-		arduinoWrite("ledFx_off");
-		
 		$("#effect_info").html("Dessin");
 	}
 	
@@ -446,8 +424,6 @@
 		}
 
 		applyEffect(effect);
-		
-		arduinoWrite("ledFx_off");
 		
 		$("#effect_info").html("Contours");
 	}	
@@ -463,8 +439,6 @@
 
 		applyEffect(effect);
 		
-		arduinoWrite("ledFx_off");
-		
 		$("#effect_info").html("Mosaique");
 	}
 	
@@ -478,8 +452,6 @@
 
 		applyEffect(effect);
 		
-		arduinoWrite("ledFx_off");
-		
 		$("#effect_info").html("Points");
 	}	
 	
@@ -489,7 +461,7 @@
 			current_texture.loadContentsOf(video);
 			c.draw(current_texture).sepia(1).update();
 		}
-		arduinoWrite("ledFx_off");
+
 		applyEffect(effect);
 		
 		$("#effect_info").html("Pop Art");
@@ -505,7 +477,7 @@
 											[ [0.00,0.38] , [0.06,0.42] , [0.12,0.46] , [0.25,0.52] , [0.36,0.56] , [0.50,0.62] , [0.55,0.62] , [0.65,0.65] , [0.75,0.65] , [0.88,0.68] , [0.94,0.69] , [1.00,0.69] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+
 		applyEffect(effect);
 		
 		$("#effect_info").html("Nashville");
@@ -519,7 +491,7 @@
 									.curves([ [0.13,0.23] , [0.25,0.31] , [0.36,0.44] , [0.50,0.60] , [0.55,0.66] , [0.64,0.79] , [0.75,0.84] , [0.88,0.84] , [0.94,0.84] , [1.00,0.83] ] , [ [0.13,0.16] , [0.25,0.20] , [0.36,0.30] , [0.50,0.44] , [0.55,0.49] , [0.64,0.58] , [0.75,0.71] , [0.88,0.85] , [0.94,0.93] , [1.00,1.00] ] , [ [0.16,0.18] , [0.25,0.22] , [0.36,0.33] , [0.50,0.50] , [0.55,0.56] , [0.64,0.68] , [0.75,0.77] , [0.88,0.78] , [0.94,0.77] , [1.00,0.78] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+
 		applyEffect(effect);
 		
 		$("#effect_info").html("1977");
@@ -532,7 +504,7 @@
 			c.draw(current_texture).curves([ [0.00,0.00] , [0.30,0.30] , [0.36,0.45] , [0.80,0.76] , [1.00,1.00] ] , [ [0.02,0.00] , [0.44,0.25] , [0.64,0.55] , [1.00,1.00] ] , [ [0.05,0.00] , [0.55,0.54] , [1.00,1.00] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+		
 		applyEffect(effect);
 		
 		$("#effect_info").html("Alien Burn");
@@ -546,7 +518,7 @@
 									.curves([ [0.00,0.20] , [0.06,0.20] , [0.13,0.27] , [0.23,0.33] , [0.36,0.47] , [0.50,0.67] , [0.55,0.73] , [0.65,0.88] , [0.75,0.96] , [0.88,1.00] , [0.96,1.00] , [1.00,1.00] ] , [ [0.00,0.00] , [0.06,0.01] , [0.13,0.07] , [0.25,0.23] , [0.36,0.45] , [0.50,0.71] , [0.65,0.83] , [0.75,0.89] , [0.88,0.94] , [0.96,0.97] , [1.00,0.99] ] , [ [0.00,0.19] , [0.06,0.20] , [0.24,0.30] , [0.36,0.43] , [0.50,0.56] , [0.55,0.60] , [0.65,0.71] , [0.75,0.75] , [0.88,0.85] , [0.96,0.88] , [1.00,0.88] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+
 		applyEffect(effect);
 		
 		$("#effect_info").html("Brannan");
@@ -560,7 +532,7 @@
 									.curves([ [0.00,0.00] , [0.42,0.68] , [1.00,1.00] ] , [ [0.00,0.00] , [0.25,0.27] , [0.45,0.45] , [0.59,0.66] , [0.69,0.74] , [1.00,1.00] ] , [ [0.00,0.00] , [0.46,0.36] , [0.71,0.55] , [0.90,0.62] , [1.00,1.00] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+		
 		applyEffect(effect);
 		
 		$("#effect_info").html("California Gold");
@@ -574,7 +546,7 @@
 									.curves([ [0.00,0.00] , [0.33,0.32] , [0.36,0.42] , [1.00,1.00] ] , [ [0.00,0.00] , [0.42,0.42] , [0.48,0.53] , [1.00,1.00] ] , [ [0.00,0.00] , [0.37,0.36] , [0.48,0.45] , [1.00,1.00] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+
 		applyEffect(effect);
 		
 		$("#effect_info").html("Country");
@@ -587,7 +559,7 @@
 			c.draw(current_texture).curves([ [0.00,0.00] , [0.22,0.09] , [0.83,1.00] ] , [ [0.00,0.00] , [0.22,0.15] , [0.82,0.89] , [1.00,1.00] ] , [ [0.00,0.08] , [1.00,0.92] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+		
 		applyEffect(effect);
 		
 		$("#effect_info").html("Cross Process");
@@ -601,7 +573,7 @@
 									.curves([ [0.00,0.00] , [0.23,0.19] , [0.47,0.53] , [0.65,0.72] , [1.00,1.00] ] , [ [0.00,0.00] , [0.20,0.23] , [0.46,0.40] , [0.76,0.78] , [1.00,1.00] ] , [ [0.00,0.00] , [0.26,0.16] , [0.54,0.50] , [0.76,0.72] , [1.00,1.00] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+
 		applyEffect(effect);
 		
 		$("#effect_info").html("Desert");
@@ -617,7 +589,7 @@
 									.hueSaturation(0, -0.9)
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+		
 		applyEffect(effect);
 		
 		$("#effect_info").html("Gotham");
@@ -631,7 +603,7 @@
 									.curves([ [0.00,0.17] , [0.06,0.26] , [0.13,0.36] , [0.25,0.58] , [0.36,0.74] , [0.50,0.85] , [0.55,0.89] , [0.64,0.93] , [0.75,0.96] , [1.00,1.00] ] , [ [0.00,0.14] , [0.06,0.15] , [0.13,0.18] , [0.25,0.31] , [0.36,0.43] , [0.50,0.57] , [0.55,0.62] , [0.64,0.67] , [0.75,0.72] , [1.00,0.76] ] , [ [0.00,0.27] , [0.06,0.27] , [0.13,0.27] , [0.25,0.27] , [0.36,0.32] , [0.50,0.38] , [0.55,0.40] , [0.64,0.43] , [0.75,0.46] , [1.00,0.49] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+
 		applyEffect(effect);
 		
 		$("#effect_info").html("Lord Kevin");
@@ -644,7 +616,7 @@
 			c.draw(current_texture)	.curves([ [0.00,0.13] , [0.06,0.13] , [0.13,0.24] , [0.25,0.47] , [0.36,0.65] , [0.50,0.80] , [0.55,0.82] , [0.64,0.87] , [0.75,0.91] , [0.88,0.96] , [0.94,0.99] , [1.00,0.99] ] , [ [0.00,0.00] , [0.06,0.00] , [0.13,0.06] , [0.25,0.25] , [0.36,0.51] , [0.50,0.75] , [0.55,0.80] , [0.64,0.85] , [0.75,0.89] , [0.88,0.95] , [0.94,0.99] , [1.00,0.99] ] , [ [0.00,0.01] , [0.13,0.04] , [0.25,0.15] , [0.36,0.36] , [0.50,0.59] , [0.55,0.67] , [0.64,0.77] , [0.75,0.82] , [0.88,0.87] , [0.94,0.89] , [1.00,0.89] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+		
 		applyEffect(effect);
 		
 		$("#effect_info").html("Hefe");
@@ -657,7 +629,7 @@
 			c.draw(current_texture)	.curves([ [0.00,0.00] , [0.29,0.22] , [0.69,0.81] , [1.00,1.00] ] , [ [0.00,0.00] , [0.29,0.21] , [0.70,0.81] , [1.00,1.00] ] , [ [0.00,0.00] , [0.19,0.31] , [0.79,0.71] , [1.00,1.00] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+
 		applyEffect(effect);
 		
 		$("#effect_info").html("Lumo");
@@ -670,7 +642,7 @@
 			c.draw(current_texture)	.curves([ [0.00,0.22] , [0.11,0.22] , [0.25,0.36] , [0.36,0.60] , [0.50,0.79] , [0.55,0.84] , [0.65,0.91] , [0.75,0.96] , [0.88,0.99] , [0.94,1.00] , [1.00,1.00] ] , [ [0.00,0.15] , [0.06,0.19] , [0.12,0.27] , [0.25,0.44] , [0.36,0.58] , [0.50,0.70] , [0.55,0.74] , [0.65,0.79] , [0.75,0.83] , [0.88,0.86] , [0.94,0.87] , [1.00,0.87] ] , [ [0.00,0.38] , [0.06,0.42] , [0.12,0.46] , [0.25,0.52] , [0.36,0.56] , [0.50,0.62] , [0.55,0.62] , [0.65,0.65] , [0.75,0.65] , [0.88,0.68] , [0.94,0.69] , [1.00,0.69] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+		
 		applyEffect(effect);
 		
 		$("#effect_info").html("Nashville");
@@ -683,7 +655,7 @@
 			c.draw(current_texture)	.curves([ [0.00,0.00] , [0.40,0.37] , [0.67,0.74] , [1.00,1.00] ] , [ [0.00,0.00] , [0.22,0.17] , [0.45,0.42] , [0.70,0.65] , [1.00,1.00] ] , [ [0.00,0.00] , [0.22,0.11] , [0.32,0.40] , [0.61,0.59] , [1.00,1.00] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+
 		applyEffect(effect);
 		
 		$("#effect_info").html("Hollywood");
@@ -696,7 +668,7 @@
 			c.draw(current_texture)	.curves([ [0.00,0.00] , [0.16,0.11] , [0.72,0.82] , [1.00,1.00] ] , [ [0.00,0.00] , [0.10,0.08] , [0.37,0.40] , [0.71,0.82] , [1.00,1.00] ] , [ [0.00,0.00] , [0.10,0.08] , [0.48,0.60] , [0.65,0.81] , [1.00,1.00] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+		
 		applyEffect(effect);
 		
 		$("#effect_info").html("Portraesque");
@@ -710,7 +682,7 @@
 									.curves([ [0.00,0.00] , [0.32,0.24] , [0.70,0.77] , [1.00,1.00] ] , [ [0.00,0.00] , [0.36,0.41] , [0.60,0.53] , [1.00,1.00] ] , [ [0.00,0.00] , [0.36,0.39] , [0.61,0.69] , [1.00,1.00] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+
 		applyEffect(effect);
 		
 		$("#effect_info").html("Vintage");
@@ -723,7 +695,7 @@
 			c.draw(current_texture)	.curves([ [0.00,0.00] , [0.23,0.21] , [0.79,0.82] , [1.00,1.00] ] , [ [0.00,0.00] , [0.11,0.08] , [0.77,0.81] , [1.00,1.00] ] , [ [0.00,0.00] , [0.14,0.10] , [0.80,0.89] , [1.00,1.00] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+
 		applyEffect(effect);
 		
 		$("#effect_info").html("Proviaesque");
@@ -736,7 +708,7 @@
 			c.draw(current_texture)	.curves([ [0.00,0.00] , [0.26,0.22] , [0.37,0.32] , [0.62,0.41] , [0.76,0.73] , [1.00,1.00] ] , [ [0.00,0.00] , [0.33,0.41] , [0.46,0.70] , [0.67,0.66] , [1.00,1.00] ] , [ [0.00,0.00] , [0.40,0.31] , [0.52,0.55] , [0.67,0.65] , [0.83,0.81] , [1.00,1.00] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+		
 		applyEffect(effect);
 		
 		$("#effect_info").html("Dream World");
@@ -749,7 +721,7 @@
 			c.draw(current_texture)	.curves([ [0.00,0.00] , [0.16,0.11] , [0.72,0.82] , [1.00,1.00] ] , [ [0.00,0.00] , [0.10,0.08] , [0.37,0.40] , [0.71,0.82] , [1.00,1.00] ] , [ [0.00,0.00] , [0.10,0.08] , [0.48,0.60] , [0.65,0.81] , [1.00,1.00] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+
 		applyEffect(effect);
 		
 		$("#effect_info").html("Valviaesque");
@@ -762,7 +734,7 @@
 			c.draw(current_texture)	.curves([ [0.00,0.00] , [0.06,0.00] , [0.13,0.01] , [0.25,0.09] , [0.36,0.24] , [0.50,0.50] , [0.55,0.59] , [0.64,0.77] , [0.75,0.91] , [0.88,0.99] , [0.94,1.00] , [1.00,1.00] ] , [ [0.00,0.00] , [0.13,0.01] , [0.25,0.09] , [0.36,0.23] , [0.50,0.50] , [0.55,0.60] , [0.64,0.76] , [0.75,0.91] , [0.88,0.99] , [0.94,1.00] , [1.00,1.00] ] , [ [0.00,0.09] , [0.06,0.15] , [0.13,0.20] , [0.25,0.29] , [0.36,0.38] , [0.50,0.50] , [0.55,0.53] , [0.64,0.62] , [0.75,0.71] , [0.88,0.80] , [0.94,0.85] , [1.00,0.89] ])
 									.update();
 		}
-		arduinoWrite("ledFx_off");
+		
 		applyEffect(effect);
 		
 		$("#effect_info").html("X-Pro");

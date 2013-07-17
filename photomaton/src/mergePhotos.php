@@ -5,6 +5,12 @@
 		include_once "./custom/custom.php";
 	}
 	
+	//Log a new file creation
+	if (!file_exists("./logs")) {
+		mkdir("./logs", 0777, true);
+	}
+	$date = date("Y-m-d H-i-s");
+	file_put_contents("$log_file", "merge:$date\n", FILE_APPEND);
 	
 	$photos = json_decode($_POST['photo']);
 	$photos_blank = json_decode($_POST['photo_blank']);

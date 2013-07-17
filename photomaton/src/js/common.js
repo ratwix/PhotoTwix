@@ -68,6 +68,8 @@ function hideAll() {
 	$("#copy_usb")[0].style.display='none';
 	$("#delall")[0].style.display='none';
 	$("#loading")[0].style.display='none';
+	$("#menu")[0].style.display='none';
+	$("#usage")[0].style.display='none';
 	$("#coverflow")[0].setAttribute('class', 'coverflow_hide');
 }
 

@@ -31,10 +31,6 @@ KEY_DELALL	= "j".charCodeAt(0);
 	$("#copy_usb")[0].style.display = 'block';
  }
  
- function showDelall() {
-	$("#delall")[0].style.display = 'block';
- }
- 
  function reset() {
 	hideAll(); 									//On cache tout les éléments
 	showCamera();
@@ -59,16 +55,20 @@ KEY_DELALL	= "j".charCodeAt(0);
 		
 		//Photo precedente
 		if (keyCode == KEY_PREV) {
-			if (flowActive()) {
+			if (menuActive()) {
+				prevMenu();
+			} else if (flowActive()) {
 				thumb_prev();
 			} else {
 				showFlow();
 			}
 		}
 		
-		//Photo suivante
+		//Touche de navigation gauche droite
 		if (keyCode == KEY_NEXT) {
-			if (flowActive()) {
+			if (menuActive()) {
+				nextMenu();
+			} else if (flowActive()) {
 				thumb_next();
 			} else {
 				showFlow();
@@ -86,7 +86,10 @@ KEY_DELALL	= "j".charCodeAt(0);
 		if (keyCode == KEY_DEL) {
 			if (flowActive()) {
 				thumb_delete();
+			} else {
+				selectMenu();
 			}
+			
 		}
 	
 		//Change le nombre de photos a prendre
@@ -139,17 +142,6 @@ KEY_DELALL	= "j".charCodeAt(0);
 	
 		//Change l'effet
 	if (keyCode == KEY_DELALL) {
-		if ($("#delall")[0].style.display == 'none') {
-			$("#delall_txt")[0].innerHTML = "Tout supprimer ? Inserez une cle USB pour la sauvegarde et appuyez a nouveau sur le bouton";
-			hideAll();
-			showDelall();
-		} else {
-			$("#delall_txt")[0].innerHTML = "Reset en cours";
-			$.ajax({
-				url: 'copydelete.php',
-				success: reset,
-				fail: reset
-			});
-		}
+		showMenu();
 	}
  }

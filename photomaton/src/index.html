@@ -3,15 +3,14 @@
 <html lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Photomaton</title>
+    <title>PhotoTwix</title>
     <meta name="Photomaton" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Charles Rathouis">
 
     <!-- Le styles -->
-	<link href="./css/preview_style.css" rel="stylesheet"/>
+	
     <link href="./css/style.css" rel="stylesheet"/>
-	<link href="./css/progress-bar.css" rel="stylesheet"/>
 	<link href="./css/thumb_galerie.css" rel="stylesheet"/>
 	<link href="./css/load.css" rel="stylesheet"/>
 	
@@ -22,7 +21,7 @@
 		<div id="camera" style="display:none">
 			<div id="piecounter"> </div> <!-- Contient le countdown entre 2 photos -->
 			<div id="camera_info" class="camera_info polaroid"> <!-- Contient les infos sur ce qui est actuellement affiche -->
-				<div id="effect_info"/></div>
+				<div id="effect_info"></div>
 				<div id="camera_view"> <!-- Vision de la camera -->
 				  <video id="camera_direct" autoplay onclick="change_filter()" style="display:none; height: auto; width: auto"></video>
 				  
@@ -61,13 +60,12 @@
 				  </table>
 				  <div id="photo_countdown"></div>  
 				</div>
-				
 			</div>
-			
-			<div id="photo_result" style="display:none"></div> <!-- Les photos -->
-			<div id="photo_result_blank" style="display:none"></div> <!-- Les photos sans les effets pour sauvegarde -->
-			<div id="camera_flash"></div> <!-- Le flash -->
 		</div>
+		<div id="photo_result" style="display:none"></div> <!-- Les photos -->
+		<div id="photo_result_blank" style="display:none"></div> <!-- Les photos sans les effets pour sauvegarde -->
+		<div id="camera_flash"></div> <!-- Le flash -->
+
 		
 		<div id="copy_usb" style="display:none">
 			<span id="copy_txt">Copie en cour</span>	
@@ -79,6 +77,29 @@
 		
 		<div id="delall" style="display:none">
 			<span id="delall_txt"></span>
+		</div>
+		
+		<div id="usage" style="display:none">
+			<span id="usage_content" class="common_text"></span>
+		</div>
+		
+		<div id="menu" style="display:none">
+			<!--
+			<div id="menu1_1" class="menu_item menu_item_selected">
+				<span>Theme des photos</span>
+			</div>
+			-->
+			<div id="menu1_2" class="menu_item" action="usage">
+				<span>Utilisation du PhotoTwix</span>
+			</div>
+			<!--
+			<div id="menu1_3" class="menu_item">
+				<span>Creation de poster et copie sur USB</span>
+			</div>
+			-->
+			<div id="menu1_4" class="menu_item" action="delAll">
+				<span>Copier tout sur USB et supprime tout (reset)</span>
+			</div>
 		</div>
 		
 		<div id="coverflow" class='coverflow_show'>
@@ -105,13 +126,12 @@
 		<script language="JavaScript" type="text/javascript" src="./js/camera_action.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./js/countdown.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./js/keypress.js"></script>
-		<script language="JavaScript" type="text/javascript" src="./js/arduino.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./js/gallery.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./js/copyusb.js" charset="utf-8"></script>
+		<script language="JavaScript" type="text/javascript" src="./js/menu.js" charset="utf-8"></script>
     <script>
     $(document).ready(function() {
         init();
-		arduinoWrite("led_off");
     });
     </script>
   </body>

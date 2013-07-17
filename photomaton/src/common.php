@@ -16,4 +16,5 @@
 	$full_path_blank = "\"$root_easyphp\\result\\blank";
 	$full_path = "\"$root_easyphp\\result";
 	$real_delete = false;
+	$log_file = "./logs/phototwix";
 ?>
