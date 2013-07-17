@@ -1,6 +1,6 @@
 Code : 
 X Create custom gallerie
-- Change key usage : use rotary to navigate throw photos
+X Change key usage : use rotary to navigate throw photos
 - Add video recording
 X Change preview position : change view to height
 - Poster creation : detect face and make a square for an automated poster
@@ -10,4 +10,4 @@ X Countdown : fix countdown (multi timer)
 General :
 X Add customization theme
 - Review board for new design
-- Add light to the design
+X Add light to the design
