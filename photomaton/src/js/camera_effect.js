@@ -19,24 +19,25 @@
 		effect_filter.push(null_effect);
 		effect_filter.push(grayscale_effect);
 		effect_filter.push(sepia_effect);
-		effect_filter.push(swirl_effect);
-		effect_filter.push(vintage_effect);			
 		effect_filter.push(gotham_effect);
+		effect_filter.push(swirl_effect);
+		effect_filter.push(pinch_effect);
+		effect_filter.push(fisheyes_effect);
+		effect_filter.push(vintage_effect);			
+		
 		effect_filter.push(nashville_effect);
 		effect_filter.push(california_gold_effect);
 		//effect_filter.push(fisheyes_effect);
-		effect_filter.push(pinch_effect);
+		
 		//effect_filter.push(bulb_pinch_effect);		
 		//effect_filter.push(square_effect);
 		
 		//effect_filter.push(saturation_effect);
-		effect_filter.push(color_effect);
+		//effect_filter.push(color_effect);
 		//effect_filter.push(country_effect);
 		//effect_filter.push(desert_effect);
-		effect_filter.push(lord_kevin_effect);
 		//effect_filter.push(brannan_effect);
 		effect_filter.push(hefe_effect);
-		effect_filter.push(nashville_effect);
 		//effect_filter.push(crossprocess_effect);
 		//effect_filter.push(mille_effect);
 		//effect_filter.push(portraesque_effect);	
@@ -101,7 +102,7 @@
 		current_texture4 = canvas4.texture(canvas);
 	}
   	
-	var effect_id = 0;
+	var effect_id = 1;
 	var interval_id = 0;
 
 	/* Change le nombre de photos a prendre */
@@ -164,7 +165,21 @@
 	*/
 	
 	function change_filter() {
-		var effect = effect_filter[effect_id++ % effect_filter.length];
+		effect_id++;
+	
+		var effect = effect_filter[effect_id % effect_filter.length];
+		if (effect != null) {
+			effect();
+		}
+	}
+	
+	function change_filter_min() {
+		effect_id--;
+		if (effect_id < 0) {
+			effect_id = effect_filter.length - 1;
+		}
+		
+		var effect = effect_filter[effect_id % effect_filter.length];
 		if (effect != null) {
 			effect();
 		}
@@ -207,7 +222,7 @@
 		}
 		
 		applyEffect(effect);
-		effect_id = 1; //pour la reinitialisation
+		effect_id = 0; //pour la reinitialisation
 		$("#effect_info").html("Normal");
 	}
 	

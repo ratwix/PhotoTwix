@@ -1,3 +1,5 @@
+//TODO : Adapter suite ecriture V3
+
 
 KEY_PHOTO	= "b".charCodeAt(0);
 KEY_EFFECT	= "e".charCodeAt(0);

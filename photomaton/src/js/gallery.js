@@ -87,14 +87,10 @@ function showFlow() {
 	}
   }
   
-  function thumb_zoom() {
+  function thumb_zoom() { //Zoomer sur l'element courant
 	remove_watermark();
-	if ($('.thumb_current').hasClass('selected')) {
-		$('#container').find('.selected').removeClass('selected');
-	} else {
-		$('#container').find('.selected').removeClass('selected');
-		$('.thumb_current').toggleClass('selected');
-	}
+	$('#container').find('.selected').removeClass('selected');
+	$('.thumb_current').toggleClass('selected');
 	$('#container').isotope('reLayout', thumb_adjust_container_position);
   }
   
@@ -105,30 +101,40 @@ function showFlow() {
 	$('#container').find('.print_watermark').removeClass('print_watermark');
   }
   
+  function thumb_clear() {
+	$('#container').find('.selected').removeClass('selected');
+	remove_watermark();
+	$('#container').isotope('reLayout', thumb_adjust_container_position);
+  }
+  
+  //Select a item for delete
+  function thumb_select_delete() {
+	var $elem = $('.thumb_current');
+	
+	remove_watermark();
+	$('#container').find('.selected').removeClass('selected');
+	$elem.addClass('selected');
+	$elem.addClass('delete_watermark');
+	$('#container').isotope('reLayout', thumb_adjust_container_position);
+  }
   
   //Delete current item
   function thumb_delete() {
 	var $elem = $('.thumb_current');
   
-	if ($elem.hasClass('delete_watermark') && $elem.hasClass('selected')) { //Si il est pret a etre supprimé
-		$('#container').find('.selected').removeClass('selected');
-		remove_watermark();
-		var path =  $('.thumb_current .thumb_b').attr('short_src'); 
+	$('#container').find('.selected').removeClass('selected');
+	remove_watermark();
+	var path =  $('.thumb_current .thumb_b').attr('short_src'); 
 		
-		$.ajax({
-			type: "POST",
-			url:"delete.php",
-			data: {path:path},
-			success: thumb_delete_handle
-		});
-	} else {
-		remove_watermark();
-		$('#container').find('.selected').removeClass('selected');
-		$elem.addClass('selected');
-		$elem.addClass('delete_watermark');
-		$('#container').isotope('reLayout', thumb_adjust_container_position);
-	}
-}
+	$.ajax({
+		type: "POST",
+		url:"delete.php",
+		data: {path:path},
+		success: thumb_delete_handle
+	});
+  }
+  
+ 
   
   function thumb_delete_handle() {
 	g_photo_in_action = true; //For bug if delete too fast
@@ -144,29 +150,30 @@ function showFlow() {
 	$('#container').isotope( 'remove', $elem, action);
   }
   
+  function thumb_select_print() {
+	var $elem = $('.thumb_current');
+	
+	remove_watermark();
+	$('#container').find('.selected').removeClass('selected');
+	$elem.addClass('selected');
+	$elem.addClass('print_watermark');
+	$('#container').isotope('reLayout', thumb_adjust_container_position);
+  }
+  
     //Print current photo
   function thumb_print() {
 	var $elem = $('.thumb_current');
   
-	if ($elem.hasClass('print_watermark') && $elem.hasClass('selected')) { //Si il est pret a etre supprimé
-		$('#container').find('.selected').removeClass('selected');
-		remove_watermark();
-		var path =  $('.thumb_current .thumb_b').attr('short_src'); 
+	$('#container').find('.selected').removeClass('selected');
+	remove_watermark();
+	var path =  $('.thumb_current .thumb_b').attr('short_src'); 
 		
-		$.ajax({
-			type: "POST",
-			url:"print.php",
-			data: {path:path},
-			success: thumb_print_handle
-		});
-	} else {
-		remove_watermark();
-		$('#container').find('.selected').removeClass('selected');
-		$elem.addClass('selected');
-		$elem.addClass('print_watermark');
-		$('#container').isotope('reLayout', thumb_adjust_container_position);
-	}
-	
+	$.ajax({
+		type: "POST",
+		url:"print.php",
+		data: {path:path},
+		success: thumb_print_handle
+	});
   }
   
   function thumb_print_handle() {
