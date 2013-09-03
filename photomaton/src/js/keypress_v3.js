@@ -83,6 +83,8 @@ KEY_MENU	= "j".charCodeAt(0);	//Acces quand appuie 5 seconde sur USB
 				showFlow();
 			} else if (menuActive()) { //On est dans le menu, valider l'action
 				selectMenu();
+			} else if (delallactive()) { //On est dans le menu, valider l'action
+				delAll()
 			} else if (flowActive()) {
 				var	elem = $('.thumb_current');
 				if (elem.hasClass('print_watermark') && elem.hasClass('selected')) { //Si l'élement est sélectionné pour impression, on l'imprime

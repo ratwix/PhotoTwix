@@ -17,4 +17,28 @@
 	$full_path = "\"$root_easyphp\\result";
 	$real_delete = false;
 	$log_file = "./logs/phototwix";
+	
+	if (!file_exists($root_photo)) {
+		mkdir($root_photo);
+	}
+	
+	if (!file_exists($root_photo_mini)) {
+		mkdir($root_photo_mini);
+	}
+	
+	if (!file_exists($root_photo_blank)) {
+		mkdir($root_photo_blank);
+	}
+	
+	if (!file_exists($root_photo_big)) {
+		mkdir($root_photo_big);
+	}
+	
+	if (!file_exists($root_photo_thumb)) {
+		mkdir($root_photo_thumb);
+	}
+	
+	if (!file_exists($delete_path)) {
+		mkdir($delete_path);
+	}	
 ?>

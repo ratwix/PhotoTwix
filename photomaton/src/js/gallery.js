@@ -203,11 +203,19 @@ function showFlow() {
 	$top_basic = $('#container').attr('thumb_basic_x');
 	$top = $('.thumb_current').offset().top;
 	$current_height = $('.thumb_current').height();
-	$container_top_marging = $('#container').css("margin-top");
+	$container_top_marging = $('#container').css("margin-top");	+ $('#button_info2').css("top") +  $('#button_info2').css("height"); 
 	$container_top_marging = $container_top_marging.substring(0, $container_top_marging.length - 2);
 	
+	$button2_top = $('#button_info2').css("top"); 
+	$button2_top = $button2_top.substring(0, $button2_top.length - 2);
+	
+	$button2_height = $('#button_info2').css("height"); 
+	$button2_height = $button2_height.substring(0, $button2_height.length - 2);
+	
+	$container_top_marging = parseInt($container_top_marging) + parseInt($button2_top) + parseInt($button2_height);
+	
 	if (((parseInt($top) + parseInt($current_height)) > window.innerHeight) || (parseInt($top) < parseInt($top_basic))) { //On dépasse la zone visible, on remonte tout ca
-		$new_top = parseInt($container_top_marging) - parseInt($top) + parseInt($top_basic);
+		$new_top = $container_top_marging - parseInt($top) + parseInt($top_basic);
 		if ($new_top > 0) {
 			$new_top = 0;
 		}

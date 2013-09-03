@@ -49,15 +49,16 @@ function selectMenu() {
 	}
 }
 
- function showDelall() {
-	$("#delall")[0].style.display = 'block';
+
+ function delallactive() {
+	return $("#delall")[0].style.display == 'block';
  }
 
 function delAll() {
 	if ($("#delall")[0].style.display == 'none') {
-		$("#delall_txt")[0].innerHTML = "Tout supprimer ? Inserez une cle USB pour la sauvegarde et appuyez sur supprimer";
+		$("#delall_txt")[0].innerHTML = "Tout supprimer ? Inserez une cle USB pour la sauvegarde et appuyez vert";
 		hideAll();
-		showDelall();
+		$("#delall")[0].style.display = 'block';
 	} else {
 		$("#delall_txt")[0].innerHTML = "Reset en cours";
 		$.ajax({

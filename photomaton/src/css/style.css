@@ -12,6 +12,20 @@
 	overflow: hidden;
 }
 
+#button_info {
+	position: absolute;
+	bottom: 10px;
+	height:400px;
+}
+#button_info2 {
+	position: absolute;
+	top: 10px;
+	height: 170px;
+	z-index: 10;
+	width: 100%;
+	background-color: rgba(0,0,0,0.6);
+}
+
 #camera_view {
 	box-shadow: 12px 12px 1px 1px rgba(0,0,0,0.6);
 }

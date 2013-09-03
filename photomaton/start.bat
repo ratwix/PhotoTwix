@@ -1,4 +1,4 @@
-set PATH=%PATH%;"C:\Program Files (x86)\BEL\Realterm\";"C:\Program Files (x86)\Google\Chrome\Application\"
+set PATH=%PATH%;"C:\Users\Phototwix3\AppData\Local\Google\Chrome\Application\"
 rem Vide le cache de google Chrome
 
 set ChromeDir=C:\Users\%USERNAME%\AppData\Local\Google\Chrome\User Data
